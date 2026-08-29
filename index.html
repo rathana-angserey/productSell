@@ -490,14 +490,16 @@
     </div>
 
     <script>
-      const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-      const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-      const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY,
-      );
-
       function appData() {
+        // Moving Supabase inside the function scope prevents Live Server reload crashes
+        const SUPABASE_URL = "https://apuovezfouaxnrxyphle.supabase.co";
+        const SUPABASE_ANON_KEY =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwdW92ZXpmb3VheG5yeHlwaGxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwMTgxNDQsImV4cCI6MjEwMzU5NDE0NH0.HRuRr_4-6eOneAFZygxnb6oewbxF1TMJOI6xR-lL8wk";
+        const supabase = window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_ANON_KEY,
+        );
+
         return {
           darkMode: false,
           lang: "en",
@@ -513,6 +515,7 @@
 
           async init() {
             try {
+              // Fetch Categories and Products from Supabase
               const { data: catData, error: catError } = await supabase
                 .from("categories")
                 .select("*");
