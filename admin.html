@@ -1,10 +1,5 @@
 <!doctype html>
-<html
-  :class="{ 'dark': darkMode }"
-  lang="en"
-  x-data="adminApp()"
-  x-init="init()"
->
+<html :class="{ 'dark': darkMode }" lang="en" x-data="adminApp()" x-init="init()">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -12,233 +7,84 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
     <!-- Alpine Plugins -->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <!-- Alpine Core -->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
 
     <!-- Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@400;600;700&family=Sora:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@400;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script>
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              primary: "#1d4ed8",
-              "primary-light": "#3b82f6",
-              accent: "#0ea5e9",
-              background: "#f4f8ff",
-              "background-dark": "#060b18",
-              surface: "#ffffff",
-              "surface-dark": "#0d1526",
-              "on-surface": "#101a33",
-              "on-surface-dark": "#e6ecff",
-              "on-surface-variant": "#5b6b8c",
-              outline: "#c7d4ef",
-              "outline-dark": "#233256",
-              "glass-white": "rgba(255, 255, 255, 0.72)",
-              "glass-dark": "rgba(13, 21, 38, 0.72)",
+              primary: "#1d4ed8", "primary-light": "#3b82f6", accent: "#0ea5e9",
+              background: "#f4f8ff", "background-dark": "#060b18",
+              surface: "#ffffff", "surface-dark": "#0d1526",
+              "on-surface": "#101a33", "on-surface-dark": "#e6ecff",
+              "on-surface-variant": "#5b6b8c", outline: "#c7d4ef", "outline-dark": "#233256",
+              "glass-white": "rgba(255, 255, 255, 0.72)", "glass-dark": "rgba(13, 21, 38, 0.72)",
             },
-            fontFamily: {
-              app: ["Sora", "sans-serif"],
-              "app-km": ['"Noto Serif Khmer"', "serif"],
-            },
+            fontFamily: { app: ["Sora", "sans-serif"], "app-km": ['"Noto Serif Khmer"', "serif"] },
           },
         },
       };
     </script>
     <style>
-      body {
-        font-family: "Sora", sans-serif;
-        background: linear-gradient(
-          180deg,
-          #eef4ff 0%,
-          #f4f8ff 40%,
-          #ffffff 100%
-        );
-        min-height: 100vh;
-      }
-      .dark body {
-        background: linear-gradient(
-          180deg,
-          #060b18 0%,
-          #0a1120 45%,
-          #0d1526 100%
-        );
-      }
-      [x-cloak] {
-        display: none !important;
-      }
-      .brand-gradient {
-        background: linear-gradient(
-          135deg,
-          #1d4ed8 0%,
-          #3b82f6 55%,
-          #0ea5e9 100%
-        );
-      }
-      .brand-gradient-text {
-        background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .glass-shadow {
-        box-shadow: 0 8px 32px 0 rgba(29, 78, 216, 0.08);
-      }
-      .dark .glass-shadow {
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
-      }
-      .spinner {
-        border: 3px solid rgba(29, 78, 216, 0.15);
-        border-top-color: #1d4ed8;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        animation: spin 0.8s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
+      body { font-family: "Sora", sans-serif; background: linear-gradient(180deg, #eef4ff 0%, #f4f8ff 40%, #ffffff 100%); min-height: 100vh; }
+      .dark body { background: linear-gradient(180deg, #060b18 0%, #0a1120 45%, #0d1526 100%); }
+      [x-cloak] { display: none !important; }
+      .brand-gradient { background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 55%, #0ea5e9 100%); }
+      .brand-gradient-text { background: linear-gradient(135deg, #1d4ed8, #0ea5e9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .glass-shadow { box-shadow: 0 8px 32px 0 rgba(29, 78, 216, 0.08); }
+      .dark .glass-shadow { box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35); }
+      .spinner { border: 3px solid rgba(29, 78, 216, 0.15); border-top-color: #1d4ed8; border-radius: 50%; width: 24px; height: 24px; animation: spin 0.8s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
       /* PRINT STYLES FOR RECEIPT */
       @media print {
-        body * {
-          visibility: hidden !important;
-        }
-        #printable-receipt,
-        #printable-receipt * {
-          visibility: visible !important;
-        }
-        #printable-receipt {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          box-shadow: none;
-          margin: 0;
-          padding: 20px;
-          background: white;
-          color: black;
-          font-family: monospace;
-        }
-        .print-hidden {
-          display: none !important;
-        }
+        body * { visibility: hidden !important; }
+        #printable-receipt, #printable-receipt * { visibility: visible !important; }
+        #printable-receipt { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; margin: 0; padding: 20px; background: white; color: black; font-family: monospace; }
+        .print-hidden { display: none !important; }
       }
     </style>
   </head>
-  <body
-    class="text-on-surface dark:text-on-surface-dark transition-colors duration-300"
-  >
+  <body class="text-on-surface dark:text-on-surface-dark transition-colors duration-300">
+    
     <!-- LOGIN GATE -->
-    <div
-      class="min-h-screen flex items-center justify-center p-4 relative z-50 print-hidden"
-      x-show="!authed"
-      x-cloak
-    >
-      <div
-        class="absolute inset-0 bg-white/20 backdrop-blur-sm dark:bg-black/40"
-      ></div>
-      <div
-        class="relative w-full max-w-[360px] overflow-hidden rounded-3xl bg-glass-white dark:bg-glass-dark backdrop-blur-xl p-8 border border-outline dark:border-outline-dark glass-shadow transform transition-all"
-      >
+    <div class="min-h-screen flex items-center justify-center p-4 relative z-50 print-hidden" x-show="!authed" x-cloak>
+      <div class="absolute inset-0 bg-white/20 backdrop-blur-sm dark:bg-black/40"></div>
+      <div class="relative w-full max-w-[360px] overflow-hidden rounded-3xl bg-glass-white dark:bg-glass-dark backdrop-blur-xl p-8 border border-outline dark:border-outline-dark glass-shadow transform transition-all">
         <div class="mb-8 text-center">
-          <div
-            class="mx-auto h-14 w-14 rounded-full brand-gradient flex items-center justify-center text-white font-bold shadow-md mb-5 text-lg"
-          >
-            GH
-          </div>
-          <h2
-            class="text-2xl font-bold tracking-tight text-on-surface dark:text-on-surface-dark"
-          >
-            Workspace
-          </h2>
-          <p
-            class="mt-2 text-sm text-on-surface-variant dark:text-on-surface-variant-dark"
-          >
-            Sign in to manage portal
-          </p>
+          <div class="mx-auto h-14 w-14 rounded-full brand-gradient flex items-center justify-center text-white font-bold shadow-md mb-5 text-lg">GH</div>
+          <h2 class="text-2xl font-bold tracking-tight text-on-surface dark:text-on-surface-dark">Workspace</h2>
+          <p class="mt-2 text-sm text-on-surface-variant dark:text-on-surface-variant-dark">Sign in to manage portal</p>
         </div>
 
         <div class="relative mb-4">
-          <span
-            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-on-surface-variant dark:text-on-surface-variant-dark text-[20px] flex items-center justify-center"
-            >mail</span
-          >
-          <input
-            type="email"
-            x-model="emailInput"
-            placeholder="Email"
-            class="h-12 w-full rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 pl-10 pr-6 text-sm outline-none transition-all focus:border-primary dark:focus:border-primary-light focus:bg-white dark:focus:bg-black/50 text-on-surface dark:text-on-surface-dark"
-          />
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-on-surface-variant dark:text-on-surface-variant-dark text-[20px] flex items-center justify-center">mail</span>
+          <input type="email" x-model="emailInput" placeholder="Email" class="h-12 w-full rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 pl-10 pr-6 text-sm outline-none transition-all focus:border-primary dark:focus:border-primary-light focus:bg-white dark:focus:bg-black/50 text-on-surface dark:text-on-surface-dark" />
         </div>
 
         <div class="relative mb-6">
-          <span
-            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-on-surface-variant dark:text-on-surface-variant-dark text-[20px] flex items-center justify-center"
-            >lock</span
-          >
-          <input
-            :type="showPassword ? 'text' : 'password'"
-            x-model="passwordInput"
-            @keydown.enter="login()"
-            placeholder="Password"
-            class="h-12 w-full rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 pl-10 pr-24 text-sm outline-none transition-all focus:border-primary dark:focus:border-primary-light focus:bg-white dark:focus:bg-black/50 text-on-surface dark:text-on-surface-dark"
-          />
-          <button
-            type="button"
-            @click="showPassword = !showPassword"
-            class="absolute right-12 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-on-surface-variant dark:text-on-surface-variant-dark hover:text-primary dark:hover:text-primary-light transition-colors focus:outline-none"
-          >
-            <span
-              class="material-symbols-outlined text-[20px]"
-              x-text="showPassword ? 'visibility_off' : 'visibility'"
-            ></span>
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-on-surface-variant dark:text-on-surface-variant-dark text-[20px] flex items-center justify-center">lock</span>
+          <input :type="showPassword ? 'text' : 'password'" x-model="passwordInput" @keydown.enter="login()" placeholder="Password" class="h-12 w-full rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 pl-10 pr-24 text-sm outline-none transition-all focus:border-primary dark:focus:border-primary-light focus:bg-white dark:focus:bg-black/50 text-on-surface dark:text-on-surface-dark" />
+          <button type="button" @click="showPassword = !showPassword" class="absolute right-12 top-1/2 -translate-y-1/2 flex items-center justify-center h-8 w-8 text-on-surface-variant dark:text-on-surface-variant-dark hover:text-primary dark:hover:text-primary-light transition-colors focus:outline-none">
+            <span class="material-symbols-outlined text-[20px]" x-text="showPassword ? 'visibility_off' : 'visibility'"></span>
           </button>
-          <button
-            @click="login()"
-            class="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-full h-9 w-9 flex items-center justify-center brand-gradient text-white transition-transform hover:scale-105 active:scale-95 shadow-md focus:outline-none"
-          >
-            <div
-              class="spinner !border-white/30 !border-top-white !w-4 !h-4 absolute"
-              x-show="loadingList"
-            ></div>
-            <span
-              class="material-symbols-outlined text-[18px]"
-              x-show="!loadingList"
-              >arrow_forward</span
-            >
+          <button @click="login()" class="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-full h-9 w-9 flex items-center justify-center brand-gradient text-white transition-transform hover:scale-105 active:scale-95 shadow-md focus:outline-none">
+            <div class="spinner !border-white/30 !border-top-white !w-4 !h-4 absolute" x-show="loadingList"></div>
+            <span class="material-symbols-outlined text-[18px]" x-show="!loadingList">arrow_forward</span>
           </button>
         </div>
         <p class="text-red-500 text-xs text-center h-4" x-text="loginError"></p>
@@ -247,98 +93,36 @@
 
     <!-- MAIN WORKSPACE -->
     <div x-show="authed" x-cloak class="print-hidden">
-      <header
-        class="bg-glass-white dark:bg-glass-dark backdrop-blur-lg fixed top-0 w-full z-40 shadow-sm border-b border-primary/10 dark:border-white/10 flex items-center h-[72px]"
-      >
-        <div
-          class="max-w-[1600px] w-full mx-auto flex justify-between items-center px-4 md:px-6"
-        >
+      <header class="bg-glass-white dark:bg-glass-dark backdrop-blur-lg fixed top-0 w-full z-40 shadow-sm border-b border-primary/10 dark:border-white/10 flex items-center h-[72px]">
+        <div class="max-w-[1600px] w-full mx-auto flex justify-between items-center px-4 md:px-6">
           <div class="flex items-center gap-3">
-            <div
-              class="h-8 w-8 rounded-full brand-gradient flex items-center justify-center text-white text-xs font-bold shadow-md"
-            >
-              GH
-            </div>
-            <h1
-              class="text-lg font-bold brand-gradient-text tracking-tight hidden sm:block"
-            >
-              Workspace
-            </h1>
-            <span
-              class="ml-2 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-bold bg-primary/10 text-primary dark:bg-primary-light/10 dark:text-primary-light"
-              x-show="['superadmin', 'admin'].includes(userRole)"
-              x-text="userRole"
-            ></span>
+            <div class="h-8 w-8 rounded-full brand-gradient flex items-center justify-center text-white text-xs font-bold shadow-md">GH</div>
+            <h1 class="text-lg font-bold brand-gradient-text tracking-tight hidden sm:block">Workspace</h1>
+            <span class="ml-2 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-bold bg-primary/10 text-primary dark:bg-primary-light/10 dark:text-primary-light" x-show="['superadmin', 'admin'].includes(userRole)" x-text="userRole"></span>
           </div>
-
+          
           <div class="flex items-center gap-2 md:gap-3">
-            <button
-              @click="darkMode = !darkMode"
-              class="text-on-surface-variant flex items-center justify-center h-10 w-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-            >
-              <span
-                class="material-symbols-outlined"
-                x-text="darkMode ? 'light_mode' : 'dark_mode'"
-              ></span>
+            <button @click="darkMode = !darkMode" class="text-on-surface-variant flex items-center justify-center h-10 w-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+              <span class="material-symbols-outlined" x-text="darkMode ? 'light_mode' : 'dark_mode'"></span>
             </button>
-
+            
             <div class="relative" @click.away="profileOpen = false">
-              <button
-                @click="profileOpen = !profileOpen"
-                class="flex items-center gap-2 px-1 pr-3 py-1 rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 hover:bg-black/5 dark:hover:bg-white/5 transition focus:outline-none"
-              >
-                <div
-                  class="h-8 w-8 rounded-full bg-primary/10 text-primary dark:text-primary-light flex items-center justify-center font-bold text-xs"
-                  x-text="getInitials(userName)"
-                ></div>
-                <span
-                  class="text-sm font-semibold max-w-[100px] truncate hidden sm:block"
-                  x-text="userName"
-                ></span>
-                <span
-                  class="material-symbols-outlined text-[18px] text-on-surface-variant transition-transform"
-                  :class="profileOpen ? 'rotate-180' : ''"
-                  >expand_more</span
-                >
+              <button @click="profileOpen = !profileOpen" class="flex items-center gap-2 px-1 pr-3 py-1 rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 hover:bg-black/5 dark:hover:bg-white/5 transition focus:outline-none">
+                <div class="h-8 w-8 rounded-full bg-primary/10 text-primary dark:text-primary-light flex items-center justify-center font-bold text-xs" x-text="getInitials(userName)"></div>
+                <span class="text-sm font-semibold max-w-[100px] truncate hidden sm:block" x-text="userName"></span>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant transition-transform" :class="profileOpen ? 'rotate-180' : ''">expand_more</span>
               </button>
-
-              <div
-                x-show="profileOpen"
-                x-transition:enter="transition ease-out duration-100"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-75"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-95"
-                class="absolute right-0 mt-2 w-56 bg-surface dark:bg-surface-dark border border-outline dark:border-outline-dark rounded-2xl shadow-xl py-2 z-50"
-              >
-                <div
-                  class="px-4 py-3 border-b border-outline dark:border-outline-dark mb-2"
-                >
+              
+              <div x-show="profileOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 mt-2 w-56 bg-surface dark:bg-surface-dark border border-outline dark:border-outline-dark rounded-2xl shadow-xl py-2 z-50">
+                <div class="px-4 py-3 border-b border-outline dark:border-outline-dark mb-2">
                   <p class="text-sm font-bold truncate" x-text="userName"></p>
-                  <p
-                    class="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5"
-                    x-text="userRole"
-                  ></p>
+                  <p class="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5" x-text="userRole"></p>
                 </div>
-                <button
-                  @click="myPasswordModal = true; profileOpen = false"
-                  class="w-full text-left px-4 py-2.5 text-sm hover:bg-black/5 dark:hover:bg-white/5 transition flex items-center gap-3"
-                >
-                  <span
-                    class="material-symbols-outlined text-[18px] text-on-surface-variant"
-                    >key</span
-                  >
-                  Change Password
+                <button @click="myPasswordModal = true; profileOpen = false" class="w-full text-left px-4 py-2.5 text-sm hover:bg-black/5 dark:hover:bg-white/5 transition flex items-center gap-3">
+                  <span class="material-symbols-outlined text-[18px] text-on-surface-variant">key</span> Change Password
                 </button>
-                <button
-                  @click="logout()"
-                  class="w-full text-left px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition flex items-center gap-3 mt-1"
-                >
-                  <span class="material-symbols-outlined text-[18px]"
-                    >logout</span
-                  >
-                  Log out
+                <button @click="logout()" class="w-full text-left px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition flex items-center gap-3 mt-1">
+                  <span class="material-symbols-outlined text-[18px]">logout</span> Log out
                 </button>
               </div>
             </div>
@@ -349,134 +133,49 @@
       <main class="pt-[90px] max-w-[1600px] mx-auto px-4 pb-16">
         <!-- Tab Navigation -->
         <div class="flex gap-2 mb-6 overflow-x-auto no-scrollbar pb-2">
-          <button
-            @click="tab = 'floor'"
-            :class="tab === 'floor' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-            class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-          >
-            Floor View
-          </button>
-          <button
-            @click="tab = 'reports'"
-            :class="tab === 'reports' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-            class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-          >
-            Reports
-          </button>
+          <button @click="tab = 'floor'" :class="tab === 'floor' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Floor View</button>
+          <button @click="tab = 'reports'" :class="tab === 'reports' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Reports</button>
 
           <template x-if="['superadmin', 'admin'].includes(userRole)">
             <div class="flex gap-2">
-              <button
-                @click="tab = 'tables'"
-                :class="tab === 'tables' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-                class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-              >
-                Tables
-              </button>
-              <button
-                @click="tab = 'products'"
-                :class="tab === 'products' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-                class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-              >
-                Products
-              </button>
-              <button
-                @click="tab = 'categories'"
-                :class="tab === 'categories' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-                class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-              >
-                Categories
-              </button>
-              <button
-                @click="tab = 'accounts'"
-                :class="tab === 'accounts' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-                class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-              >
-                Accounts
-              </button>
-              <button
-                @click="tab = 'settings'"
-                :class="tab === 'settings' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'"
-                class="px-6 py-2 rounded-full text-sm font-medium transition-all"
-              >
-                Settings
-              </button>
+              <button @click="tab = 'tables'" :class="tab === 'tables' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Tables</button>
+              <button @click="tab = 'products'" :class="tab === 'products' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Products</button>
+              <button @click="tab = 'categories'" :class="tab === 'categories' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Categories</button>
+              <button @click="tab = 'accounts'" :class="tab === 'accounts' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Accounts</button>
+              <button @click="tab = 'settings'" :class="tab === 'settings' ? 'brand-gradient text-white shadow-md' : 'bg-glass-white dark:bg-glass-dark border border-outline dark:border-outline-dark text-on-surface-variant'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Settings</button>
             </div>
           </template>
         </div>
 
         <!-- ================= FLOOR VIEW TAB ================= -->
         <div x-show="tab === 'floor'" x-transition.opacity>
-          <div
-            class="mb-6 flex items-center justify-between bg-primary/10 dark:bg-primary-light/10 border border-primary/20 rounded-2xl p-4 transition-all"
-            x-show="selectedFreeTables.length > 0"
-            x-collapse
-          >
+          <div class="mb-6 flex items-center justify-between bg-primary/10 dark:bg-primary-light/10 border border-primary/20 rounded-2xl p-4 transition-all" x-show="selectedFreeTables.length > 0" x-collapse>
             <div class="flex items-center gap-3">
-              <span
-                class="material-symbols-outlined text-primary dark:text-primary-light"
-                >receipt_long</span
-              >
-              <p class="font-medium text-primary dark:text-primary-light">
-                <span x-text="selectedFreeTables.length"></span> table(s)
-                selected
-              </p>
+              <span class="material-symbols-outlined text-primary dark:text-primary-light">receipt_long</span>
+              <p class="font-medium text-primary dark:text-primary-light"><span x-text="selectedFreeTables.length"></span> table(s) selected</p>
             </div>
             <div class="flex gap-2">
-              <button
-                @click="selectedFreeTables = []"
-                class="px-4 py-1.5 rounded-full text-sm font-medium border border-primary/30 text-primary dark:text-primary-light hover:bg-primary/10 transition"
-              >
-                Cancel
-              </button>
-              <button
-                @click="startOrder()"
-                class="brand-gradient text-white px-5 py-1.5 rounded-full text-sm font-medium shadow-md hover:scale-105 transition flex items-center gap-2"
-              >
-                <div
-                  class="spinner !w-3 !h-3 !border-white/30 !border-top-white"
-                  x-show="isCreatingOrder"
-                ></div>
+              <button @click="selectedFreeTables = []" class="px-4 py-1.5 rounded-full text-sm font-medium border border-primary/30 text-primary dark:text-primary-light hover:bg-primary/10 transition">Cancel</button>
+              <button @click="startOrder()" class="brand-gradient text-white px-5 py-1.5 rounded-full text-sm font-medium shadow-md hover:scale-105 transition flex items-center gap-2">
+                <div class="spinner !w-3 !h-3 !border-white/30 !border-top-white" x-show="isCreatingOrder"></div>
                 Start Order
               </button>
             </div>
           </div>
 
-          <div
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
-          >
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             <template x-for="t in tables" :key="t.table_id">
-              <button
-                @click="handleTableClick(t)"
-                class="relative flex flex-col items-center justify-center p-6 rounded-3xl transition-all duration-300 text-center glass-shadow border"
-                :class="{ 'bg-glass-white dark:bg-glass-dark border-outline dark:border-outline-dark hover:border-primary': t.status === 'free' && !selectedFreeTables.includes(t.table_id), 'ring-2 ring-primary bg-primary/5 border-transparent': selectedFreeTables.includes(t.table_id), 'brand-gradient text-white border-transparent shadow-lg transform hover:scale-[1.02]': t.status === 'occupied', 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-400': t.status === 'needs_cleaning', 'bg-zinc-100 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 text-zinc-400 cursor-not-allowed striped-bg': t.status === 'out_of_service' }"
-              >
-                <div
-                  class="absolute top-3 left-3 h-5 w-5 rounded-full border flex items-center justify-center transition-colors"
-                  x-show="t.status === 'free'"
-                  :class="selectedFreeTables.includes(t.table_id) ? 'bg-primary border-primary text-white' : 'border-outline dark:border-outline-dark text-transparent'"
-                >
-                  <span class="material-symbols-outlined text-[14px]"
-                    >check</span
-                  >
+              <button @click="handleTableClick(t)"
+                      class="relative flex flex-col items-center justify-center p-6 rounded-3xl transition-all duration-300 text-center glass-shadow border"
+                      :class="{ 'bg-glass-white dark:bg-glass-dark border-outline dark:border-outline-dark hover:border-primary': t.status === 'free' && !selectedFreeTables.includes(t.table_id), 'ring-2 ring-primary bg-primary/5 border-transparent': selectedFreeTables.includes(t.table_id), 'brand-gradient text-white border-transparent shadow-lg transform hover:scale-[1.02]': t.status === 'occupied', 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-400': t.status === 'needs_cleaning', 'bg-zinc-100 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 text-zinc-400 cursor-not-allowed striped-bg': t.status === 'out_of_service' }">
+                <div class="absolute top-3 left-3 h-5 w-5 rounded-full border flex items-center justify-center transition-colors" x-show="t.status === 'free'" :class="selectedFreeTables.includes(t.table_id) ? 'bg-primary border-primary text-white' : 'border-outline dark:border-outline-dark text-transparent'"><span class="material-symbols-outlined text-[14px]">check</span></div>
+                <span class="material-symbols-outlined text-[32px] mb-2" :class="t.status === 'occupied' ? 'opacity-100' : 'opacity-60'"><span x-text="t.status === 'needs_cleaning' ? 'cleaning_services' : 'table_restaurant'"></span></span>
+                <h3 class="font-bold text-lg" :class="{'text-white': t.status === 'occupied', 'text-on-surface dark:text-on-surface-dark': t.status !== 'occupied'}" x-text="t.name"></h3>
+                <p class="text-xs uppercase tracking-wider font-semibold mt-1" :class="{'text-white/80': t.status === 'occupied', 'text-on-surface-variant dark:text-on-surface-variant-dark opacity-70': t.status !== 'occupied'}" x-text="t.status.replace('_', ' ')"></p>
+                <div class="absolute bottom-3 right-3 flex items-center gap-1 opacity-60" :class="t.status === 'occupied' ? 'text-white' : ''">
+                  <span class="material-symbols-outlined text-[13px]">group</span>
+                  <span class="text-[11px] font-bold" x-text="t.capacity"></span>
                 </div>
-                <span
-                  class="material-symbols-outlined text-[32px] mb-2"
-                  :class="t.status === 'occupied' ? 'opacity-100' : 'opacity-60'"
-                  ><span
-                    x-text="t.status === 'needs_cleaning' ? 'cleaning_services' : 'table_restaurant'"
-                  ></span
-                ></span>
-                <h3
-                  class="font-bold text-lg"
-                  :class="{'text-white': t.status === 'occupied', 'text-on-surface dark:text-on-surface-dark': t.status !== 'occupied'}"
-                  x-text="t.name"
-                ></h3>
-                <p
-                  class="text-xs uppercase tracking-wider font-semibold mt-1"
-                  :class="{'text-white/80': t.status === 'occupied', 'text-on-surface-variant dark:text-on-surface-variant-dark opacity-70': t.status !== 'occupied'}"
-                  x-text="t.status.replace('_', ' ')"
-                ></p>
               </button>
             </template>
           </div>
@@ -485,136 +184,54 @@
         <!-- ================= REPORTS TAB ================= -->
         <div x-show="tab === 'reports'" x-transition.opacity>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div
-              class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6"
-            >
-              <p
-                class="text-sm font-medium text-on-surface-variant dark:text-on-surface-variant-dark uppercase tracking-wider mb-2"
-              >
-                Today's Sales
-              </p>
-              <p
-                class="text-4xl font-bold text-primary dark:text-primary-light"
-                x-text="'$' + reports.todaySales.toFixed(2)"
-              ></p>
+            <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6">
+              <p class="text-sm font-medium text-on-surface-variant dark:text-on-surface-variant-dark uppercase tracking-wider mb-2">Today's Sales</p>
+              <p class="text-4xl font-bold text-primary dark:text-primary-light" x-text="'$' + reports.todaySales.toFixed(2)"></p>
             </div>
-            <div
-              class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6"
-            >
-              <p
-                class="text-sm font-medium text-on-surface-variant dark:text-on-surface-variant-dark uppercase tracking-wider mb-2"
-              >
-                Last 7 Days
-              </p>
-              <p
-                class="text-4xl font-bold text-accent"
-                x-text="'$' + reports.weekSales.toFixed(2)"
-              ></p>
+            <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6">
+              <p class="text-sm font-medium text-on-surface-variant dark:text-on-surface-variant-dark uppercase tracking-wider mb-2">Last 7 Days</p>
+              <p class="text-4xl font-bold text-accent" x-text="'$' + reports.weekSales.toFixed(2)"></p>
             </div>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div
-              class="lg:col-span-1 bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden flex flex-col"
-            >
-              <div
-                class="px-6 py-5 border-b border-outline dark:border-outline-dark"
-              >
-                <h2 class="font-bold text-lg">Top Products</h2>
-              </div>
+            <div class="lg:col-span-1 bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden flex flex-col">
+              <div class="px-6 py-5 border-b border-outline dark:border-outline-dark"><h2 class="font-bold text-lg">Top Products</h2></div>
               <div class="p-6 flex-1 overflow-y-auto max-h-[500px]">
                 <div class="flex flex-col gap-4">
-                  <template
-                    x-for="(item, index) in reports.bestSellers"
-                    :key="index"
-                  >
+                  <template x-for="(item, index) in reports.bestSellers" :key="index">
                     <div class="flex items-center justify-between">
                       <div class="flex items-center gap-3">
-                        <div
-                          class="h-8 w-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs"
-                          x-text="'#' + (index + 1)"
-                        ></div>
-                        <p
-                          class="font-medium text-sm text-on-surface dark:text-on-surface-dark"
-                          x-text="item.name"
-                        ></p>
+                        <div class="h-8 w-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs" x-text="'#' + (index + 1)"></div>
+                        <p class="font-medium text-sm text-on-surface dark:text-on-surface-dark" x-text="item.name"></p>
                       </div>
-                      <p
-                        class="text-sm font-bold text-on-surface-variant dark:text-on-surface-variant-dark"
-                        x-text="item.qty + ' sold'"
-                      ></p>
+                      <p class="text-sm font-bold text-on-surface-variant dark:text-on-surface-variant-dark" x-text="item.qty + ' sold'"></p>
                     </div>
                   </template>
-                  <div
-                    x-show="reports.bestSellers.length === 0"
-                    class="text-center text-sm text-on-surface-variant opacity-70"
-                  >
-                    No sales data yet.
-                  </div>
+                  <div x-show="reports.bestSellers.length === 0" class="text-center text-sm text-on-surface-variant opacity-70">No sales data yet.</div>
                 </div>
               </div>
             </div>
 
-            <div
-              class="lg:col-span-2 bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden flex flex-col"
-            >
-              <div
-                class="px-6 py-5 border-b border-outline dark:border-outline-dark"
-              >
-                <h2 class="font-bold text-lg">Recent Paid Orders</h2>
-              </div>
-              <div
-                class="divide-y divide-outline/60 dark:divide-outline-dark overflow-y-auto max-h-[500px]"
-              >
-                <template
-                  x-for="order in reports.recentPaidOrders"
-                  :key="order.order_id"
-                >
-                  <div
-                    class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-                  >
+            <div class="lg:col-span-2 bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden flex flex-col">
+              <div class="px-6 py-5 border-b border-outline dark:border-outline-dark"><h2 class="font-bold text-lg">Recent Paid Orders</h2></div>
+              <div class="divide-y divide-outline/60 dark:divide-outline-dark overflow-y-auto max-h-[500px]">
+                <template x-for="order in reports.recentPaidOrders" :key="order.order_id">
+                  <div class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
                       <div class="flex items-center gap-2 mb-1">
-                        <span
-                          class="font-bold text-on-surface dark:text-on-surface-dark"
-                          x-text="'#' + order.order_id.split('-')[0]"
-                        ></span>
-                        <span
-                          class="px-2 py-0.5 rounded-md text-[10px] uppercase font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                          >Paid</span
-                        >
+                        <span class="font-bold text-on-surface dark:text-on-surface-dark" x-text="'#' + order.order_id.split('-')[0]"></span>
+                        <span class="px-2 py-0.5 rounded-md text-[10px] uppercase font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Paid</span>
                       </div>
-                      <p
-                        class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mb-1"
-                      >
-                        <span
-                          class="material-symbols-outlined text-[14px] align-middle mr-1"
-                          >table_restaurant</span
-                        ><span
-                          x-text="order.order_tables?.map(ot => ot.tables?.name).join(', ') || 'No table'"
-                        ></span>
-                      </p>
-                      <p
-                        class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark"
-                        x-text="new Date(order.paid_at).toLocaleString()"
-                      ></p>
+                      <p class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mb-1"><span class="material-symbols-outlined text-[14px] align-middle mr-1">table_restaurant</span><span x-text="order.order_tables?.map(ot => ot.tables?.name).join(', ') || 'No table'"></span></p>
+                      <p class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark" x-text="new Date(order.paid_at).toLocaleString()"></p>
                     </div>
-                    <div
-                      class="text-left sm:text-right flex items-center justify-end gap-3"
-                    >
-                      <p
-                        class="text-xl font-bold brand-gradient-text"
-                        x-text="'$' + Number(order.total).toFixed(2)"
-                      ></p>
+                    <div class="text-left sm:text-right flex items-center justify-end gap-3">
+                      <p class="text-xl font-bold brand-gradient-text" x-text="'$' + Number(order.total).toFixed(2)"></p>
                     </div>
                   </div>
                 </template>
-                <div
-                  x-show="reports.recentPaidOrders.length === 0"
-                  class="p-6 text-center text-sm text-on-surface-variant opacity-70"
-                >
-                  No completed orders yet.
-                </div>
+                <div x-show="reports.recentPaidOrders.length === 0" class="p-6 text-center text-sm text-on-surface-variant opacity-70">No completed orders yet.</div>
               </div>
             </div>
           </div>
@@ -622,136 +239,59 @@
 
         <!-- ================= TABLES TAB ================= -->
         <div x-show="tab === 'tables'">
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8"
-          >
-            <h2
-              class="font-bold text-xl mb-6 brand-gradient-text"
-              x-text="editingTableId ? 'Edit Table' : 'Add New Table'"
-            ></h2>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8">
+            <h2 class="font-bold text-xl mb-6 brand-gradient-text" x-text="editingTableId ? 'Edit Table' : 'Add New Table'"></h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
               <div class="md:col-span-2">
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Table Name</label
-                >
-                <input
-                  x-model="tableForm.name"
-                  placeholder="e.g. Table 01"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Table Name</label>
+                <input x-model="tableForm.name" placeholder="e.g. Table 01" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" />
               </div>
               <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Capacity (Persons)</label
-                >
-                <input
-                  type="number"
-                  x-model="tableForm.capacity"
-                  min="1"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Capacity (Persons)</label>
+                <input type="number" x-model="tableForm.capacity" min="1" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" />
               </div>
               <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Zone</label
-                >
-                <input
-                  x-model="tableForm.zone"
-                  placeholder="e.g. Main Hall"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Zone</label>
+                <input x-model="tableForm.zone" placeholder="e.g. Main Hall" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" />
               </div>
               <div class="md:col-span-4" x-show="editingTableId">
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Status</label
-                >
-                <select
-                  x-model="tableForm.status"
-                  class="w-full md:w-1/4 px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                >
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Status</label>
+                <select x-model="tableForm.status" class="w-full md:w-1/4 px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary">
                   <option value="free">Free</option>
                   <option value="needs_cleaning">Needs Cleaning</option>
                   <option value="out_of_service">Out of Service</option>
-                  <option value="occupied" disabled>
-                    Occupied (Set by orders)
-                  </option>
+                  <option value="occupied" disabled>Occupied (Set by orders)</option>
                 </select>
               </div>
             </div>
             <div class="flex gap-3 mt-6">
-              <button
-                @click="saveTable()"
-                :disabled="savingTable"
-                class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition flex items-center gap-2 disabled:opacity-60"
-              >
-                <div
-                  class="spinner !w-4 !h-4 !border-2 !border-white/30 !border-top-white"
-                  x-show="savingTable"
-                ></div>
-                <span
-                  x-text="editingTableId ? 'Update Table' : 'Add Table'"
-                ></span>
+              <button @click="saveTable()" :disabled="savingTable" class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition flex items-center gap-2 disabled:opacity-60">
+                <div class="spinner !w-4 !h-4 !border-2 !border-white/30 !border-top-white" x-show="savingTable"></div>
+                <span x-text="editingTableId ? 'Update Table' : 'Add Table'"></span>
               </button>
-              <button
-                @click="resetTableForm()"
-                x-show="editingTableId"
-                class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition"
-              >
-                Cancel
-              </button>
+              <button @click="resetTableForm()" x-show="editingTableId" class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition">Cancel</button>
             </div>
           </div>
-
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden"
-          >
-            <div
-              class="px-6 py-5 border-b border-outline dark:border-outline-dark"
-            >
-              <h2 class="font-bold text-lg">
-                All Tables (<span x-text="tables.length"></span>)
-              </h2>
-            </div>
+          
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden">
+            <div class="px-6 py-5 border-b border-outline dark:border-outline-dark"><h2 class="font-bold text-lg">All Tables (<span x-text="tables.length"></span>)</h2></div>
             <div class="divide-y divide-outline/60 dark:divide-outline-dark">
               <template x-for="t in tables" :key="t.table_id">
                 <div class="flex items-center gap-4 px-6 py-4">
-                  <div
-                    class="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold"
-                  >
-                    <span class="material-symbols-outlined text-[20px]"
-                      >table_restaurant</span
-                    >
+                  <div class="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+                    <span class="material-symbols-outlined text-[20px]">table_restaurant</span>
                   </div>
                   <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2">
                       <p class="font-medium truncate" x-text="t.name"></p>
-                      <span
-                        class="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
-                        :class="{ 'bg-green-100 text-green-700': t.status === 'free', 'bg-blue-100 text-blue-700': t.status === 'occupied', 'bg-orange-100 text-orange-700': t.status === 'needs_cleaning', 'bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400': t.status === 'out_of_service'}"
-                        x-text="t.status.replace('_', ' ')"
-                      ></span>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider" 
+                            :class="{ 'bg-green-100 text-green-700': t.status === 'free', 'bg-blue-100 text-blue-700': t.status === 'occupied', 'bg-orange-100 text-orange-700': t.status === 'needs_cleaning', 'bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400': t.status === 'out_of_service'}" 
+                            x-text="t.status.replace('_', ' ')"></span>
                     </div>
-                    <p
-                      class="text-xs text-on-surface-variant mt-0.5"
-                      x-text="t.capacity + ' persons · ' + (t.zone || 'No Zone')"
-                    ></p>
+                    <p class="text-xs text-on-surface-variant mt-0.5" x-text="t.capacity + ' persons · ' + (t.zone || 'No Zone')"></p>
                   </div>
-                  <button
-                    @click="editTable(t)"
-                    class="text-primary text-sm font-medium hover:underline px-2"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    @click="removeTable(t)"
-                    class="text-red-500 text-sm font-medium hover:underline pl-2"
-                  >
-                    Delete
-                  </button>
+                  <button @click="editTable(t)" class="text-primary text-sm font-medium hover:underline px-2">Edit</button>
+                  <button @click="removeTable(t)" class="text-red-500 text-sm font-medium hover:underline pl-2">Delete</button>
                 </div>
               </template>
             </div>
@@ -760,163 +300,40 @@
 
         <!-- ================= PRODUCTS TAB ================= -->
         <div x-show="tab === 'products'">
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8"
-          >
-            <h2
-              class="font-bold text-xl mb-6 brand-gradient-text"
-              x-text="editingId ? 'Edit Product' : 'Add New Product'"
-            ></h2>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8">
+            <h2 class="font-bold text-xl mb-6 brand-gradient-text" x-text="editingId ? 'Edit Product' : 'Add New Product'"></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Name (English)</label
-                ><input
-                  x-model="form.pronameen"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Name (Khmer)</label
-                ><input
-                  x-model="form.pronamekh"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Category</label
-                ><select
-                  x-model="form.procategoryid"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                >
-                  <option value="" disabled>Choose a category</option>
-                  <template x-for="cat in categories" :key="cat.catid"
-                    ><option
-                      :value="cat.catid"
-                      x-text="cat.catnameen + ' / ' + cat.catnamekh"
-                    ></option
-                  ></template>
-                </select>
-              </div>
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Price ($)</label
-                ><input
-                  x-model="form.proprice"
-                  type="number"
-                  step="0.01"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
-              <div class="md:col-span-2">
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Image URL</label
-                ><input
-                  x-model="form.proimageurl"
-                  placeholder="https://..."
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
-
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Name (English)</label><input x-model="form.pronameen" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Name (Khmer)</label><input x-model="form.pronamekh" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Category</label><select x-model="form.procategoryid" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"><option value="" disabled>Choose a category</option><template x-for="cat in categories" :key="cat.catid"><option :value="cat.catid" x-text="cat.catnameen + ' / ' + cat.catnamekh"></option></template></select></div>
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Price ($)</label><input x-model="form.proprice" type="number" step="0.01" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
+              <div class="md:col-span-2"><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Image URL</label><input x-model="form.proimageurl" placeholder="https://..." class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
+              
               <!-- DESCRIPTION FIELDS ADDED BACK -->
-              <div class="md:col-span-2">
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Description (English)</label
-                ><textarea
-                  x-model="form.prodescriptionen"
-                  rows="2"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                ></textarea>
-              </div>
-              <div class="md:col-span-2">
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Description (Khmer)</label
-                ><textarea
-                  x-model="form.prodescriptionkh"
-                  rows="2"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                ></textarea>
-              </div>
+              <div class="md:col-span-2"><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Description (English)</label><textarea x-model="form.prodescriptionen" rows="2" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"></textarea></div>
+              <div class="md:col-span-2"><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Description (Khmer)</label><textarea x-model="form.prodescriptionkh" rows="2" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"></textarea></div>
             </div>
             <div class="flex gap-3 mt-6">
-              <button
-                @click="saveProduct()"
-                :disabled="saving"
-                class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition"
-              >
-                <span
-                  x-text="editingId ? 'Update Product' : 'Add Product'"
-                ></span>
-              </button>
-              <button
-                @click="resetForm()"
-                x-show="editingId"
-                class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition"
-              >
-                Cancel
-              </button>
+              <button @click="saveProduct()" :disabled="saving" class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition"><span x-text="editingId ? 'Update Product' : 'Add Product'"></span></button>
+              <button @click="resetForm()" x-show="editingId" class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition">Cancel</button>
             </div>
           </div>
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden"
-          >
-            <div
-              class="px-6 py-5 border-b border-outline dark:border-outline-dark"
-            >
-              <h2 class="font-bold text-lg">
-                All Products (<span x-text="products.length"></span>)
-              </h2>
-            </div>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden">
+            <div class="px-6 py-5 border-b border-outline dark:border-outline-dark"><h2 class="font-bold text-lg">All Products (<span x-text="products.length"></span>)</h2></div>
             <div class="divide-y divide-outline/60 dark:divide-outline-dark">
               <template x-for="p in products" :key="p.proid">
                 <div class="flex items-center gap-4 px-6 py-4">
-                  <img
-                    :src="p.proimageurl"
-                    class="w-14 h-14 rounded-xl object-cover border border-outline dark:border-outline-dark flex-shrink-0"
-                    onerror="
-                      this.src = 'https://placehold.co/100x100?text=No+Image'
-                    "
-                  />
+                  <img :src="p.proimageurl" class="w-14 h-14 rounded-xl object-cover border border-outline dark:border-outline-dark flex-shrink-0" onerror="this.src='https://placehold.co/100x100?text=No+Image'"/>
                   <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2">
                       <p class="font-medium truncate" x-text="p.pronameen"></p>
-                      <span
-                        class="text-[10px] px-2 py-0.5 rounded-full font-medium"
-                        :class="p.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-500 dark:bg-gray-800 dark:text-gray-400'"
-                        x-text="p.status"
-                      ></span>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full font-medium" :class="p.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-500 dark:bg-gray-800 dark:text-gray-400'" x-text="p.status"></span>
                     </div>
-                    <p
-                      class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mt-0.5"
-                      x-text="categoryName(p.procategoryid) + ' · $' + Number(p.proprice).toFixed(2)"
-                    ></p>
+                    <p class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mt-0.5" x-text="categoryName(p.procategoryid) + ' · $' + Number(p.proprice).toFixed(2)"></p>
                   </div>
-                  <button
-                    @click="editProduct(p)"
-                    class="text-primary dark:text-primary-light text-sm font-medium hover:underline px-2"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    @click="toggleStatus(p)"
-                    class="text-sm font-medium hover:underline px-2 text-on-surface-variant dark:text-on-surface-variant-dark"
-                    x-text="p.status === 'active' ? 'Hide' : 'Show'"
-                  ></button>
-                  <button
-                    @click="removeProduct(p)"
-                    class="text-red-500 text-sm font-medium hover:underline pl-2"
-                  >
-                    Delete
-                  </button>
+                  <button @click="editProduct(p)" class="text-primary dark:text-primary-light text-sm font-medium hover:underline px-2">Edit</button>
+                  <button @click="toggleStatus(p)" class="text-sm font-medium hover:underline px-2 text-on-surface-variant dark:text-on-surface-variant-dark" x-text="p.status === 'active' ? 'Hide' : 'Show'"></button>
+                  <button @click="removeProduct(p)" class="text-red-500 text-sm font-medium hover:underline pl-2">Delete</button>
                 </div>
               </template>
             </div>
@@ -925,80 +342,25 @@
 
         <!-- ================= CATEGORIES TAB ================= -->
         <div x-show="tab === 'categories'">
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8"
-          >
-            <h2
-              class="font-bold text-xl mb-6 brand-gradient-text"
-              x-text="editingCategoryId ? 'Edit Category' : 'Add New Category'"
-            ></h2>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8">
+            <h2 class="font-bold text-xl mb-6 brand-gradient-text" x-text="editingCategoryId ? 'Edit Category' : 'Add New Category'"></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Name (English)</label
-                ><input
-                  x-model="categoryForm.catnameen"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Name (Khmer)</label
-                ><input
-                  x-model="categoryForm.catnamekh"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Name (English)</label><input x-model="categoryForm.catnameen" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Name (Khmer)</label><input x-model="categoryForm.catnamekh" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
             </div>
             <div class="flex gap-3 mt-6">
-              <button
-                @click="saveCategory()"
-                class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition"
-              >
-                <span
-                  x-text="editingCategoryId ? 'Update Category' : 'Add Category'"
-                ></span>
-              </button>
-              <button
-                @click="resetCategoryForm()"
-                x-show="editingCategoryId"
-                class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition"
-              >
-                Cancel
-              </button>
+              <button @click="saveCategory()" class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition"><span x-text="editingCategoryId ? 'Update Category' : 'Add Category'"></span></button>
+              <button @click="resetCategoryForm()" x-show="editingCategoryId" class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition">Cancel</button>
             </div>
           </div>
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden"
-          >
-            <div
-              class="px-6 py-5 border-b border-outline dark:border-outline-dark"
-            >
-              <h2 class="font-bold text-lg">
-                All Categories (<span x-text="categories.length"></span>)
-              </h2>
-            </div>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden">
+            <div class="px-6 py-5 border-b border-outline dark:border-outline-dark"><h2 class="font-bold text-lg">All Categories (<span x-text="categories.length"></span>)</h2></div>
             <div class="divide-y divide-outline/60 dark:divide-outline-dark">
               <template x-for="c in categories" :key="c.catid">
                 <div class="flex items-center gap-4 px-6 py-4">
-                  <div class="flex-1 min-w-0">
-                    <p class="font-medium" x-text="c.catnameen"></p>
-                  </div>
-                  <button
-                    @click="editCategory(c)"
-                    class="text-primary text-sm font-medium hover:underline px-2"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    @click="removeCategory(c)"
-                    x-show="c.catnameen !== 'Uncategorized'"
-                    class="text-red-500 text-sm font-medium hover:underline pl-2"
-                  >
-                    Delete
-                  </button>
+                  <div class="flex-1 min-w-0"><p class="font-medium" x-text="c.catnameen"></p></div>
+                  <button @click="editCategory(c)" class="text-primary text-sm font-medium hover:underline px-2">Edit</button>
+                  <button @click="removeCategory(c)" x-show="c.catnameen !== 'Uncategorized'" class="text-red-500 text-sm font-medium hover:underline pl-2">Delete</button>
                 </div>
               </template>
             </div>
@@ -1007,142 +369,43 @@
 
         <!-- ================= ACCOUNTS TAB ================= -->
         <div x-show="tab === 'accounts'">
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8"
-          >
-            <h2
-              class="font-bold text-xl mb-6 brand-gradient-text"
-              x-text="editingUserId ? 'Edit Profile Details' : 'Add New User Account'"
-            ></h2>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8">
+            <h2 class="font-bold text-xl mb-6 brand-gradient-text" x-text="editingUserId ? 'Edit Profile Details' : 'Add New User Account'"></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Full Name</label><input x-model="userForm.name" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
               <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Full Name</label
-                ><input
-                  x-model="userForm.name"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Role</label
-                >
-                <select
-                  x-model="userForm.role"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                  :disabled="editingUserId && userForm.role === 'superadmin' && userRole !== 'superadmin'"
-                >
-                  <option value="" disabled>Select role</option>
-                  <option value="seller">Seller</option>
-                  <option value="admin" x-show="userRole === 'superadmin'">
-                    Admin
-                  </option>
-                  <option value="superadmin" x-show="userRole === 'superadmin'">
-                    Superadmin
-                  </option>
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Role</label>
+                <select x-model="userForm.role" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" :disabled="editingUserId && userForm.role === 'superadmin' && userRole !== 'superadmin'">
+                  <option value="" disabled>Select role</option><option value="seller">Seller</option><option value="admin" x-show="userRole === 'superadmin'">Admin</option><option value="superadmin" x-show="userRole === 'superadmin'">Superadmin</option>
                 </select>
               </div>
-              <div x-show="!editingUserId">
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Email</label
-                ><input
-                  type="email"
-                  x-model="userForm.email"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
-              </div>
+              <div x-show="!editingUserId"><label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Email</label><input type="email" x-model="userForm.email" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" /></div>
               <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  x-text="editingUserId ? 'New Password (leave blank to keep current)' : 'Password'"
-                ></label>
-                <input
-                  type="password"
-                  x-model="userForm.password"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block" x-text="editingUserId ? 'New Password (leave blank to keep current)' : 'Password'"></label>
+                <input type="password" x-model="userForm.password" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" />
               </div>
             </div>
             <div class="flex gap-3 mt-6">
-              <button
-                @click="saveUser()"
-                :disabled="savingUser"
-                class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition flex items-center gap-2 disabled:opacity-60"
-              >
-                <div
-                  class="spinner !w-4 !h-4 !border-2 !border-white/30 !border-top-white"
-                  x-show="savingUser"
-                ></div>
-                <span
-                  x-text="editingUserId ? 'Update Profile' : 'Create Account'"
-                ></span>
+              <button @click="saveUser()" :disabled="savingUser" class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition flex items-center gap-2 disabled:opacity-60">
+                <div class="spinner !w-4 !h-4 !border-2 !border-white/30 !border-top-white" x-show="savingUser"></div><span x-text="editingUserId ? 'Update Profile' : 'Create Account'"></span>
               </button>
-              <button
-                @click="resetUserForm()"
-                x-show="editingUserId"
-                class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition"
-              >
-                Cancel
-              </button>
+              <button @click="resetUserForm()" x-show="editingUserId" class="px-6 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm hover:bg-black/5 transition">Cancel</button>
             </div>
           </div>
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden"
-          >
-            <div
-              class="px-6 py-5 border-b border-outline dark:border-outline-dark"
-            >
-              <h2 class="font-bold text-lg">
-                System Accounts (<span x-text="profiles.length"></span>)
-              </h2>
-            </div>
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow overflow-hidden">
+            <div class="px-6 py-5 border-b border-outline dark:border-outline-dark"><h2 class="font-bold text-lg">System Accounts (<span x-text="profiles.length"></span>)</h2></div>
             <div class="divide-y divide-outline/60 dark:divide-outline-dark">
               <template x-for="p in profiles" :key="p.id">
                 <div class="flex items-center gap-4 px-6 py-4">
-                  <div
-                    class="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary-light/10 text-primary dark:text-primary-light flex items-center justify-center font-bold"
-                    x-text="getInitials(p.name)"
-                  ></div>
+                  <div class="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary-light/10 text-primary dark:text-primary-light flex items-center justify-center font-bold" x-text="getInitials(p.name)"></div>
                   <div class="flex-1 min-w-0">
-                    <div class="flex items-center gap-2">
-                      <p class="font-medium truncate" x-text="p.name"></p>
-                      <span
-                        class="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
-                        :class="{ 'bg-purple-100 text-purple-700': p.role === 'superadmin', 'bg-blue-100 text-blue-700': p.role === 'admin', 'bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400': p.role === 'seller'}"
-                        x-text="p.role"
-                      ></span>
-                    </div>
-                    <p
-                      class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mt-0.5"
-                      x-text="p.email"
-                    ></p>
+                    <div class="flex items-center gap-2"><p class="font-medium truncate" x-text="p.name"></p><span class="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider" :class="{ 'bg-purple-100 text-purple-700': p.role === 'superadmin', 'bg-blue-100 text-blue-700': p.role === 'admin', 'bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400': p.role === 'seller'}" x-text="p.role"></span></div>
+                    <p class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mt-0.5" x-text="p.email"></p>
                   </div>
-                  <template
-                    x-if="(userRole === 'superadmin' || (userRole === 'admin' && p.role === 'seller')) && p.id !== userId"
-                  >
-                    <div class="flex items-center">
-                      <button
-                        @click="editUser(p)"
-                        class="text-primary dark:text-primary-light text-sm font-medium hover:underline px-2"
-                      >
-                        Edit</button
-                      ><button
-                        @click="removeUser(p)"
-                        class="text-red-500 text-sm font-medium hover:underline pl-2"
-                      >
-                        Delete
-                      </button>
-                    </div>
+                  <template x-if="(userRole === 'superadmin' || (userRole === 'admin' && p.role === 'seller')) && p.id !== userId">
+                    <div class="flex items-center"><button @click="editUser(p)" class="text-primary dark:text-primary-light text-sm font-medium hover:underline px-2">Edit</button><button @click="removeUser(p)" class="text-red-500 text-sm font-medium hover:underline pl-2">Delete</button></div>
                   </template>
-                  <template x-if="p.id === userId"
-                    ><span
-                      class="text-xs font-semibold text-primary opacity-50 px-2"
-                      >You</span
-                    ></template
-                  >
+                  <template x-if="p.id === userId"><span class="text-xs font-semibold text-primary opacity-50 px-2">You</span></template>
                 </div>
               </template>
             </div>
@@ -1151,80 +414,28 @@
 
         <!-- ================= SETTINGS TAB ================= -->
         <div x-show="tab === 'settings'">
-          <div
-            class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8 max-w-2xl mx-auto"
-          >
-            <h2 class="font-bold text-xl mb-6 brand-gradient-text">
-              Shop Settings
-            </h2>
-
+          <div class="bg-glass-white dark:bg-glass-dark backdrop-blur-xl border border-outline dark:border-outline-dark rounded-3xl glass-shadow p-6 md:p-8 mb-8 max-w-2xl mx-auto">
+            <h2 class="font-bold text-xl mb-6 brand-gradient-text">Shop Settings</h2>
+            
             <div class="mb-8 space-y-4">
-              <h3
-                class="text-sm font-semibold text-on-surface dark:text-on-surface-dark border-b border-outline pb-2"
-              >
-                Receipt Details
-              </h3>
+              <h3 class="text-sm font-semibold text-on-surface dark:text-on-surface-dark border-b border-outline pb-2">Receipt Details</h3>
               <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Shop Name</label
-                >
-                <input
-                  x-model="shopSettings.shop_name"
-                  placeholder="e.g. Golden Hour Pub"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Shop Name</label>
+                <input x-model="shopSettings.shop_name" placeholder="e.g. Golden Hour Pub" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" />
               </div>
               <div>
-                <label
-                  class="text-xs font-medium text-on-surface-variant mb-1.5 block"
-                  >Shop Address</label
-                >
-                <input
-                  x-model="shopSettings.shop_address"
-                  placeholder="e.g. Phnom Penh, Cambodia"
-                  class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary"
-                />
+                <label class="text-xs font-medium text-on-surface-variant mb-1.5 block">Shop Address</label>
+                <input x-model="shopSettings.shop_address" placeholder="e.g. Phnom Penh, Cambodia" class="w-full px-4 py-2 bg-white/60 dark:bg-black/30 border border-outline dark:border-outline-dark rounded-xl text-sm focus:outline-none focus:border-primary" />
               </div>
-              <button
-                @click="saveShopDetails()"
-                class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition"
-              >
-                Save Details
-              </button>
+              <button @click="saveShopDetails()" class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition">Save Details</button>
             </div>
 
             <div>
-              <h3
-                class="text-sm font-semibold text-on-surface dark:text-on-surface-dark border-b border-outline pb-2 mb-4"
-              >
-                Payment QR Code
-              </h3>
-              <div
-                class="bg-white p-4 rounded-2xl shadow-inner inline-block mb-4 border border-zinc-200"
-              >
-                <img
-                  :src="shopSettings?.qr_image_url || 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=setup_qr_in_db'"
-                  alt="Payment QR"
-                  class="w-40 h-40 object-contain"
-                />
-              </div>
-              <input
-                type="file"
-                @change="handleQRSelect($event)"
-                accept="image/*"
-                class="w-full text-sm text-on-surface-variant file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-all cursor-pointer outline-none mb-4"
-              />
-              <button
-                @click="uploadQR()"
-                :disabled="!qrFile || uploadingQR"
-                class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition flex items-center gap-2 disabled:opacity-50"
-              >
-                <div
-                  class="spinner !w-4 !h-4 !border-2 !border-white/30 !border-top-white"
-                  x-show="uploadingQR"
-                ></div>
-                <span>Upload & Save QR</span>
+              <h3 class="text-sm font-semibold text-on-surface dark:text-on-surface-dark border-b border-outline pb-2 mb-4">Payment QR Code</h3>
+              <div class="bg-white p-4 rounded-2xl shadow-inner inline-block mb-4 border border-zinc-200"><img :src="shopSettings?.qr_image_url || 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=setup_qr_in_db'" alt="Payment QR" class="w-40 h-40 object-contain" /></div>
+              <input type="file" @change="handleQRSelect($event)" accept="image/*" class="w-full text-sm text-on-surface-variant file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-all cursor-pointer outline-none mb-4" />
+              <button @click="uploadQR()" :disabled="!qrFile || uploadingQR" class="brand-gradient text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:scale-[1.02] transition flex items-center gap-2 disabled:opacity-50">
+                <div class="spinner !w-4 !h-4 !border-2 !border-white/30 !border-top-white" x-show="uploadingQR"></div><span>Upload & Save QR</span>
               </button>
             </div>
           </div>
@@ -1233,217 +444,79 @@
     </div>
 
     <!-- ORDER MODAL -->
-    <div
-      class="fixed inset-0 z-[100] flex justify-end bg-black/40 backdrop-blur-sm transition-opacity print-hidden"
-      x-show="activeOrderModal"
-      x-cloak
-    >
-      <div
-        class="w-full md:w-[800px] h-full bg-surface dark:bg-surface-dark shadow-2xl flex flex-col transform transition-transform duration-300"
-        @click.away="closeOrderModal()"
-        x-transition:enter="translate-x-full"
-        x-transition:enter-end="translate-x-0"
-        x-transition:leave="translate-x-0"
-        x-transition:leave-end="translate-x-full"
-      >
-        <div
-          class="px-6 py-4 border-b border-outline dark:border-outline-dark flex items-center justify-between bg-glass-white dark:bg-glass-dark"
-        >
+    <div class="fixed inset-0 z-[100] flex justify-end bg-black/40 backdrop-blur-sm transition-opacity print-hidden" x-show="activeOrderModal" x-cloak>
+      <div class="w-full md:w-[800px] h-full bg-surface dark:bg-surface-dark shadow-2xl flex flex-col transform transition-transform duration-300" @click.away="closeOrderModal()" x-transition:enter="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="translate-x-0" x-transition:leave-end="translate-x-full">
+        <div class="px-6 py-4 border-b border-outline dark:border-outline-dark flex items-center justify-between bg-glass-white dark:bg-glass-dark">
           <div>
             <div class="flex items-center gap-2">
-              <h2
-                class="text-2xl font-bold brand-gradient-text"
-                x-text="'Order #' + activeOrder?.order_id.split('-')[0]"
-              ></h2>
-              <span
-                class="px-2 py-0.5 rounded-md text-[10px] uppercase font-bold text-white shadow-sm"
-                :class="activeOrder?.status === 'paid' ? 'bg-green-500' : 'bg-orange-500'"
-                x-text="activeOrder?.status"
-              ></span>
+              <h2 class="text-2xl font-bold brand-gradient-text" x-text="'Order #' + activeOrder?.order_id.split('-')[0]"></h2>
+              <span class="px-2 py-0.5 rounded-md text-[10px] uppercase font-bold text-white shadow-sm" :class="activeOrder?.status === 'paid' ? 'bg-green-500' : 'bg-orange-500'" x-text="activeOrder?.status"></span>
             </div>
-            <p
-              class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mt-1 flex items-center gap-1"
-            >
-              <span class="material-symbols-outlined text-[16px]"
-                >table_restaurant</span
-              ><span
-                x-text="activeOrderTables.map(t => t.name).join(', ') || 'No tables'"
-              ></span>
-            </p>
+            <p class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">table_restaurant</span><span x-text="activeOrderTables.map(t => t.name).join(', ') || 'No tables'"></span></p>
           </div>
           <div class="flex items-center gap-2">
-            <button
-              @click="receiptModal = true"
-              class="h-10 px-4 rounded-full border border-outline dark:border-outline-dark hover:bg-black/5 flex items-center gap-2 text-sm font-medium transition"
-            >
-              <span class="material-symbols-outlined text-[18px]">receipt</span>
-              Receipt
-            </button>
-            <button
-              @click="closeOrderModal()"
-              class="h-10 w-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center transition"
-            >
-              <span class="material-symbols-outlined">close</span>
-            </button>
+            <button @click="receiptModal = true" class="h-10 px-4 rounded-full border border-outline dark:border-outline-dark hover:bg-black/5 flex items-center gap-2 text-sm font-medium transition"><span class="material-symbols-outlined text-[18px]">receipt</span> Receipt</button>
+            <button @click="closeOrderModal()" class="h-10 w-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center transition"><span class="material-symbols-outlined">close</span></button>
           </div>
         </div>
 
         <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
-          <div
-            class="w-full md:w-1/2 flex flex-col border-r border-outline dark:border-outline-dark bg-background dark:bg-background-dark/50 overflow-y-auto"
-          >
+          <div class="w-full md:w-1/2 flex flex-col border-r border-outline dark:border-outline-dark bg-background dark:bg-background-dark/50 overflow-y-auto">
             <div class="flex-1 p-4 flex flex-col gap-3">
               <template x-for="item in activeOrderItems" :key="item.item_id">
-                <div
-                  class="flex items-center justify-between bg-surface dark:bg-surface-dark p-3 rounded-2xl border border-outline dark:border-outline-dark glass-shadow"
-                >
+                <div class="flex items-center justify-between bg-surface dark:bg-surface-dark p-3 rounded-2xl border border-outline dark:border-outline-dark glass-shadow">
                   <div>
-                    <p
-                      class="font-semibold text-sm text-on-surface dark:text-on-surface-dark"
-                      x-text="getProductName(item.product_id)"
-                    ></p>
-                    <p
-                      class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark"
-                      x-text="item.quantity + ' x $' + Number(item.unit_price_snapshot).toFixed(2)"
-                    ></p>
+                    <p class="font-semibold text-sm text-on-surface dark:text-on-surface-dark" x-text="getProductName(item.product_id)"></p>
+                    <p class="text-xs text-on-surface-variant dark:text-on-surface-variant-dark" x-text="item.quantity + ' x $' + Number(item.unit_price_snapshot).toFixed(2)"></p>
                   </div>
                   <div class="flex items-center gap-3">
-                    <p
-                      class="font-bold text-primary dark:text-primary-light"
-                      x-text="'$' + (item.quantity * item.unit_price_snapshot).toFixed(2)"
-                    ></p>
-                    <button
-                      x-show="activeOrder?.status === 'open'"
-                      @click="removeOrderItem(item.item_id)"
-                      class="text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 p-1.5 rounded-full transition"
-                    >
-                      <span class="material-symbols-outlined text-[18px]"
-                        >delete</span
-                      >
-                    </button>
+                    <p class="font-bold text-primary dark:text-primary-light" x-text="'$' + (item.quantity * item.unit_price_snapshot).toFixed(2)"></p>
+                    <button x-show="activeOrder?.status === 'open'" @click="removeOrderItem(item.item_id)" class="text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 p-1.5 rounded-full transition"><span class="material-symbols-outlined text-[18px]">delete</span></button>
                   </div>
                 </div>
               </template>
             </div>
 
-            <div
-              class="p-6 bg-glass-white dark:bg-glass-dark border-t border-outline dark:border-outline-dark shadow-[0_-4px_20px_rgba(0,0,0,0.05)]"
-            >
+            <div class="p-6 bg-glass-white dark:bg-glass-dark border-t border-outline dark:border-outline-dark shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
               <div class="flex justify-between items-end mb-4">
-                <span
-                  class="text-sm font-semibold text-on-surface-variant dark:text-on-surface-variant-dark uppercase tracking-wider"
-                  >Total Due</span
-                >
-                <span
-                  class="text-3xl font-bold text-on-surface dark:text-on-surface-dark"
-                  x-text="'$' + activeOrderTotal.toFixed(2)"
-                ></span>
+                <span class="text-sm font-semibold text-on-surface-variant dark:text-on-surface-variant-dark uppercase tracking-wider">Total Due</span>
+                <span class="text-3xl font-bold text-on-surface dark:text-on-surface-dark" x-text="'$' + activeOrderTotal.toFixed(2)"></span>
               </div>
-
+              
               <!-- Open Order Actions -->
-              <div
-                class="flex flex-col gap-2"
-                x-show="activeOrder?.status === 'open'"
-              >
+              <div class="flex flex-col gap-2" x-show="activeOrder?.status === 'open'">
                 <div class="flex gap-2">
-                  <button
-                    @click="cancelOrder()"
-                    class="px-4 border border-red-200 text-red-500 bg-red-50 hover:bg-red-100 rounded-full font-bold transition flex items-center justify-center"
-                    title="Cancel Order & Free Table"
-                  >
-                    <span class="material-symbols-outlined">delete_sweep</span>
-                  </button>
-                  <button
-                    @click="openPaymentModal()"
-                    class="flex-1 brand-gradient text-white font-bold py-3 rounded-full shadow-lg hover:scale-[1.02] active:scale-95 transition flex items-center justify-center gap-2"
-                  >
-                    <span class="material-symbols-outlined">payments</span> Mark
-                    as Paid
+                  <button @click="cancelOrder()" class="px-4 border border-red-200 text-red-500 bg-red-50 hover:bg-red-100 rounded-full font-bold transition flex items-center justify-center" title="Cancel Order & Free Table"><span class="material-symbols-outlined">delete_sweep</span></button>
+                  <button @click="openPaymentModal()" class="flex-1 brand-gradient text-white font-bold py-3 rounded-full shadow-lg hover:scale-[1.02] active:scale-95 transition flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">payments</span> Mark as Paid
                   </button>
                 </div>
                 <div class="flex gap-2">
-                  <select
-                    x-model="tableToLink"
-                    class="flex-1 text-xs rounded-full border-outline dark:border-outline-dark bg-surface dark:bg-surface-dark focus:ring-primary"
-                  >
-                    <option value="">Merge free table...</option>
-                    <template
-                      x-for="t in tables.filter(x => x.status === 'free')"
-                      :key="t.table_id"
-                      ><option :value="t.table_id" x-text="t.name"></option
-                    ></template>
-                  </select>
-                  <button
-                    @click="linkTableToOrder()"
-                    class="px-4 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition"
-                  >
-                    Add Table
-                  </button>
+                  <select x-model="tableToLink" class="flex-1 text-xs rounded-full border-outline dark:border-outline-dark bg-surface dark:bg-surface-dark focus:ring-primary"><option value="">Merge free table...</option><template x-for="t in tables.filter(x => x.status === 'free')" :key="t.table_id"><option :value="t.table_id" x-text="t.name"></option></template></select>
+                  <button @click="linkTableToOrder()" class="px-4 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition">Add Table</button>
                 </div>
               </div>
 
               <!-- Paid Order Actions -->
-              <div
-                class="flex flex-col gap-2"
-                x-show="activeOrder?.status === 'paid'"
-              >
-                <div
-                  class="bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 p-3 rounded-2xl flex items-center justify-center gap-2 text-sm font-medium border border-green-200 dark:border-green-800/50"
-                >
-                  <span class="material-symbols-outlined">check_circle</span>
-                  Order completed and locked
+              <div class="flex flex-col gap-2" x-show="activeOrder?.status === 'paid'">
+                <div class="bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 p-3 rounded-2xl flex items-center justify-center gap-2 text-sm font-medium border border-green-200 dark:border-green-800/50">
+                  <span class="material-symbols-outlined">check_circle</span> Order completed and locked
                 </div>
               </div>
             </div>
           </div>
 
           <div class="w-full md:w-1/2 flex flex-col overflow-hidden relative">
-            <div
-              x-show="activeOrder?.status === 'paid'"
-              class="absolute inset-0 bg-white/60 dark:bg-black/60 backdrop-blur-sm z-10 flex items-center justify-center"
-            >
-              <p
-                class="font-bold bg-surface dark:bg-surface-dark px-6 py-2 rounded-full border border-outline shadow-sm"
-              >
-                Cannot add items to paid orders
-              </p>
+            <div x-show="activeOrder?.status === 'paid'" class="absolute inset-0 bg-white/60 dark:bg-black/60 backdrop-blur-sm z-10 flex items-center justify-center"><p class="font-bold bg-surface dark:bg-surface-dark px-6 py-2 rounded-full border border-outline shadow-sm">Cannot add items to paid orders</p></div>
+            <div class="p-4 border-b border-outline dark:border-outline-dark bg-glass-white dark:bg-glass-dark">
+              <input type="text" x-model="pickerSearch" placeholder="Search menu..." class="w-full h-10 rounded-full border border-outline dark:border-outline-dark bg-surface dark:bg-surface-dark pl-4 text-sm focus:border-primary transition-all" />
             </div>
-            <div
-              class="p-4 border-b border-outline dark:border-outline-dark bg-glass-white dark:bg-glass-dark"
-            >
-              <input
-                type="text"
-                x-model="pickerSearch"
-                placeholder="Search menu..."
-                class="w-full h-10 rounded-full border border-outline dark:border-outline-dark bg-surface dark:bg-surface-dark pl-4 text-sm focus:border-primary transition-all"
-              />
-            </div>
-            <div
-              class="flex-1 overflow-y-auto p-4 bg-background dark:bg-background-dark/50"
-            >
+            <div class="flex-1 overflow-y-auto p-4 bg-background dark:bg-background-dark/50">
               <div class="grid grid-cols-2 gap-3">
                 <template x-for="p in pickerProducts" :key="p.proid">
-                  <button
-                    @click="addItemToOrder(p)"
-                    class="flex flex-col text-left bg-surface dark:bg-surface-dark border border-outline dark:border-outline-dark rounded-2xl overflow-hidden glass-shadow hover:border-primary hover:scale-[1.02] active:scale-95 transition-all"
-                  >
-                    <img
-                      :src="p.proimageurl"
-                      class="h-24 w-full object-cover"
-                      onerror="
-                        this.src = 'https://placehold.co/200x150?text=No+Image'
-                      "
-                    />
-                    <div class="p-3 w-full">
-                      <p
-                        class="font-bold text-sm text-on-surface dark:text-on-surface-dark truncate w-full"
-                        x-text="p.pronameen"
-                      ></p>
-                      <p
-                        class="text-xs font-semibold text-primary mt-1"
-                        x-text="'$' + Number(p.proprice).toFixed(2)"
-                      ></p>
-                    </div>
+                  <button @click="addItemToOrder(p)" class="flex flex-col text-left bg-surface dark:bg-surface-dark border border-outline dark:border-outline-dark rounded-2xl overflow-hidden glass-shadow hover:border-primary hover:scale-[1.02] active:scale-95 transition-all">
+                    <img :src="p.proimageurl" class="h-24 w-full object-cover" onerror="this.src = 'https://placehold.co/200x150?text=No+Image'" />
+                    <div class="p-3 w-full"><p class="font-bold text-sm text-on-surface dark:text-on-surface-dark truncate w-full" x-text="p.pronameen"></p><p class="text-xs font-semibold text-primary mt-1" x-text="'$' + Number(p.proprice).toFixed(2)"></p></div>
                   </button>
                 </template>
               </div>
@@ -1454,160 +527,53 @@
     </div>
 
     <!-- MY PASSWORD MODAL -->
-    <div
-      class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md print-hidden"
-      x-show="myPasswordModal"
-      x-cloak
-    >
-      <div
-        class="w-full max-w-sm bg-surface dark:bg-surface-dark rounded-3xl shadow-2xl p-8 border border-outline dark:border-outline-dark transform transition-all"
-        @click.away="myPasswordModal = false"
-        x-transition:enter="ease-out duration-300"
-        x-transition:enter-start="opacity-0 scale-95"
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="ease-in duration-200"
-        x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-95"
-      >
-        <h3
-          class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2 text-center"
-        >
-          Change My Password
-        </h3>
-        <p
-          class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mb-6 text-center"
-        >
-          Enter a new secure password.
-        </p>
-        <input
-          type="password"
-          x-model="myNewPassword"
-          placeholder="New Password"
-          class="w-full h-12 rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 px-6 text-sm outline-none transition-all focus:border-primary mb-6"
-        />
+    <div class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md print-hidden" x-show="myPasswordModal" x-cloak>
+      <div class="w-full max-w-sm bg-surface dark:bg-surface-dark rounded-3xl shadow-2xl p-8 border border-outline dark:border-outline-dark transform transition-all" @click.away="myPasswordModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+        <h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2 text-center">Change My Password</h3>
+        <p class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mb-6 text-center">Enter a new secure password.</p>
+        <input type="password" x-model="myNewPassword" placeholder="New Password" class="w-full h-12 rounded-full border border-outline dark:border-outline-dark bg-white/60 dark:bg-black/30 px-6 text-sm outline-none transition-all focus:border-primary mb-6" />
         <div class="flex gap-3">
-          <button
-            @click="myPasswordModal = false"
-            class="flex-1 px-4 py-3 rounded-full border border-outline dark:border-outline-dark font-medium hover:bg-black/5 transition"
-          >
-            Cancel
-          </button>
-          <button
-            @click="changeMyPassword()"
-            class="flex-1 px-4 py-3 rounded-full brand-gradient text-white font-bold transition shadow-md"
-          >
-            Update
-          </button>
+          <button @click="myPasswordModal = false" class="flex-1 px-4 py-3 rounded-full border border-outline dark:border-outline-dark font-medium hover:bg-black/5 transition">Cancel</button>
+          <button @click="changeMyPassword()" class="flex-1 px-4 py-3 rounded-full brand-gradient text-white font-bold transition shadow-md">Update</button>
         </div>
       </div>
     </div>
 
     <!-- PAYMENT QR MODAL -->
-    <div
-      class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md print-hidden"
-      x-show="paymentModal"
-      x-cloak
-    >
-      <div
-        class="w-full max-w-sm bg-surface dark:bg-surface-dark rounded-3xl shadow-2xl p-8 text-center border border-outline dark:border-outline-dark transform transition-all"
-        @click.away="paymentModal = false"
-        x-transition:enter="ease-out duration-300"
-        x-transition:enter-start="opacity-0 scale-95"
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="ease-in duration-200"
-        x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-95"
-      >
-        <h3
-          class="text-2xl font-bold text-on-surface dark:text-on-surface-dark mb-2"
-        >
-          Total:
-          <span
-            class="brand-gradient-text"
-            x-text="'$' + activeOrderTotal.toFixed(2)"
-          ></span>
-        </h3>
-        <div
-          class="bg-white p-4 rounded-2xl shadow-inner inline-block mb-8 border border-zinc-200"
-        >
-          <img
-            :src="shopSettings?.qr_image_url || 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=setup_qr_in_db'"
-            alt="Payment QR"
-            class="w-48 h-48 object-contain"
-          />
-        </div>
+    <div class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md print-hidden" x-show="paymentModal" x-cloak>
+      <div class="w-full max-w-sm bg-surface dark:bg-surface-dark rounded-3xl shadow-2xl p-8 text-center border border-outline dark:border-outline-dark transform transition-all" @click.away="paymentModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+        <h3 class="text-2xl font-bold text-on-surface dark:text-on-surface-dark mb-2">Total: <span class="brand-gradient-text" x-text="'$' + activeOrderTotal.toFixed(2)"></span></h3>
+        <div class="bg-white p-4 rounded-2xl shadow-inner inline-block mb-8 border border-zinc-200"><img :src="shopSettings?.qr_image_url || 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=setup_qr_in_db'" alt="Payment QR" class="w-48 h-48 object-contain" /></div>
         <div class="flex gap-3">
-          <button
-            @click="paymentModal = false"
-            class="flex-1 px-4 py-3 rounded-full border border-outline dark:border-outline-dark font-medium hover:bg-black/5 transition"
-          >
-            Cancel
-          </button>
-          <button
-            @click="confirmPayment()"
-            class="flex-1 px-4 py-3 rounded-full bg-green-500 hover:bg-green-600 text-white font-bold transition shadow-md flex items-center justify-center gap-2"
-          >
-            <span class="material-symbols-outlined text-[18px]"
-              >check_circle</span
-            >
-            Done
-          </button>
+          <button @click="paymentModal = false" class="flex-1 px-4 py-3 rounded-full border border-outline dark:border-outline-dark font-medium hover:bg-black/5 transition">Cancel</button>
+          <button @click="confirmPayment()" class="flex-1 px-4 py-3 rounded-full bg-green-500 hover:bg-green-600 text-white font-bold transition shadow-md flex items-center justify-center gap-2"><span class="material-symbols-outlined text-[18px]">check_circle</span> Done</button>
         </div>
       </div>
     </div>
 
     <!-- PRINTABLE RECEIPT MODAL -->
-    <div
-      class="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/60 print:bg-transparent print:p-0"
-      x-show="receiptModal"
-      x-cloak
-    >
+    <div class="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/60 print:bg-transparent print:p-0" x-show="receiptModal" x-cloak>
+      
       <!-- Action buttons hidden during print -->
-      <div
-        class="absolute bottom-6 left-0 right-0 flex justify-center gap-4 print-hidden z-10"
-      >
-        <button
-          @click="receiptModal = false"
-          class="px-6 py-3 rounded-full bg-white text-black font-bold shadow-xl hover:bg-gray-100 transition"
-        >
-          Close
-        </button>
-        <button
-          @click="window.print()"
-          class="px-6 py-3 rounded-full brand-gradient text-white font-bold shadow-xl hover:scale-105 transition flex items-center gap-2"
-        >
-          <span class="material-symbols-outlined">print</span> Print
-        </button>
+      <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-4 print-hidden z-10">
+        <button @click="receiptModal = false" class="px-6 py-3 rounded-full bg-white text-black font-bold shadow-xl hover:bg-gray-100 transition">Close</button>
+        <button @click="window.print()" class="px-6 py-3 rounded-full brand-gradient text-white font-bold shadow-xl hover:scale-105 transition flex items-center gap-2"><span class="material-symbols-outlined">print</span> Print</button>
       </div>
 
       <!-- The Thermal Receipt -->
-      <div
-        id="printable-receipt"
-        class="bg-white text-black w-full max-w-[320px] p-6 shadow-2xl relative print:shadow-none print:w-full print:max-w-full text-xs font-mono"
-      >
+      <div id="printable-receipt" class="bg-white text-black w-full max-w-[320px] p-6 shadow-2xl relative print:shadow-none print:w-full print:max-w-full text-xs font-mono">
         <div class="text-center mb-4">
-          <h2
-            class="text-lg font-bold uppercase"
-            x-text="shopSettings?.shop_name || 'Golden Hour Pub'"
-          ></h2>
-          <p
-            class="whitespace-pre-wrap mt-1"
-            x-text="shopSettings?.shop_address || 'Phnom Penh, Cambodia'"
-          ></p>
+          <h2 class="text-lg font-bold uppercase" x-text="shopSettings?.shop_name || 'Golden Hour Pub'"></h2>
+          <p class="whitespace-pre-wrap mt-1" x-text="shopSettings?.shop_address || 'Phnom Penh, Cambodia'"></p>
         </div>
 
-        <div
-          class="flex justify-between items-end mb-4 border-b border-dashed border-gray-400 pb-2"
-        >
+        <div class="flex justify-between items-end mb-4 border-b border-dashed border-gray-400 pb-2">
           <div>
             <p>Date: <span x-text="new Date().toLocaleDateString()"></span></p>
             <p>Cashier: <span x-text="userName"></span></p>
           </div>
           <div class="text-right">
-            <p
-              class="font-bold"
-              x-text="'Order #' + activeOrder?.order_id.split('-')[0]"
-            ></p>
+            <p class="font-bold" x-text="'Order #' + activeOrder?.order_id.split('-')[0]"></p>
           </div>
         </div>
 
@@ -1623,374 +589,158 @@
             <template x-for="item in activeOrderItems" :key="item.item_id">
               <tr>
                 <td class="py-1 align-top" x-text="item.quantity"></td>
-                <td
-                  class="py-1 pr-2 align-top"
-                  x-text="getProductName(item.product_id)"
-                ></td>
-                <td
-                  class="py-1 align-top text-right"
-                  x-text="'$' + (item.quantity * item.unit_price_snapshot).toFixed(2)"
-                ></td>
+                <td class="py-1 pr-2 align-top" x-text="getProductName(item.product_id)"></td>
+                <td class="py-1 align-top text-right" x-text="'$' + (item.quantity * item.unit_price_snapshot).toFixed(2)"></td>
               </tr>
             </template>
           </tbody>
         </table>
 
-        <div
-          class="border-t border-dashed border-gray-400 pt-2 mb-6 flex justify-between items-center text-sm font-bold"
-        >
+        <div class="border-t border-dashed border-gray-400 pt-2 mb-6 flex justify-between items-center text-sm font-bold">
           <span>TOTAL</span>
           <span x-text="'$' + activeOrderTotal.toFixed(2)"></span>
         </div>
 
         <div class="flex flex-col items-center justify-center mb-6">
           <p class="mb-2 text-[10px]">Scan to Pay</p>
-          <img
-            :src="shopSettings?.qr_image_url || 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=setup_qr'"
-            class="w-32 h-32 grayscale contrast-200"
-          />
+          <img :src="shopSettings?.qr_image_url || 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=setup_qr'" class="w-32 h-32 grayscale contrast-200">
         </div>
 
-        <div
-          class="text-center font-bold border-t border-dashed border-gray-400 pt-4"
-        >
+        <div class="text-center font-bold border-t border-dashed border-gray-400 pt-4">
           THANK YOU!
         </div>
       </div>
     </div>
 
     <!-- TOASTS & CONFIRM MODALS -->
-    <div
-      class="fixed bottom-6 right-6 z-[200] flex flex-col gap-3 pointer-events-none print-hidden"
-    >
-      <template x-for="toast in toasts" :key="toast.id"
-        ><div
-          x-transition:enter="transition ease-out duration-300 transform"
-          x-transition:enter-start="opacity-0 translate-y-4"
-          x-transition:enter-end="opacity-100 translate-y-0"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0 scale-90"
-          class="pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-xl glass-shadow backdrop-blur-xl bg-white/95 dark:bg-zinc-900/95 border border-outline dark:border-outline-dark min-w-[260px]"
-        >
-          <div class="flex-shrink-0">
-            <span
-              class="material-symbols-outlined text-green-500"
-              x-show="toast.type === 'success'"
-              >check_circle</span
-            ><span
-              class="material-symbols-outlined text-red-500"
-              x-show="toast.type === 'error'"
-              >error</span
-            ><span
-              class="material-symbols-outlined text-primary"
-              x-show="toast.type === 'info'"
-              >info</span
-            >
-          </div>
-          <p
-            class="text-sm font-medium text-on-surface dark:text-on-surface-dark"
-            x-text="toast.message"
-          ></p></div
-      ></template>
+    <div class="fixed bottom-6 right-6 z-[200] flex flex-col gap-3 pointer-events-none print-hidden">
+      <template x-for="toast in toasts" :key="toast.id"><div x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 scale-90" class="pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-xl glass-shadow backdrop-blur-xl bg-white/95 dark:bg-zinc-900/95 border border-outline dark:border-outline-dark min-w-[260px]"><div class="flex-shrink-0"><span class="material-symbols-outlined text-green-500" x-show="toast.type === 'success'">check_circle</span><span class="material-symbols-outlined text-red-500" x-show="toast.type === 'error'">error</span><span class="material-symbols-outlined text-primary" x-show="toast.type === 'info'">info</span></div><p class="text-sm font-medium text-on-surface dark:text-on-surface-dark" x-text="toast.message"></p></div></template>
     </div>
-    <div
-      class="fixed inset-0 z-[200] flex items-center justify-center p-4 print-hidden"
-      x-show="confirmModal.isOpen"
-      x-cloak
-    >
-      <div
-        class="absolute inset-0 bg-white/40 backdrop-blur-sm dark:bg-zinc-950/60"
-        @click="closeConfirm()"
-        x-transition.opacity
-      ></div>
-      <div
-        class="relative w-full max-w-[360px] rounded-3xl bg-glass-white dark:bg-glass-dark backdrop-blur-xl p-8 border border-outline dark:border-outline-dark glass-shadow text-center"
-        x-transition
-      >
-        <div
-          class="mx-auto h-14 w-14 rounded-full bg-red-50 dark:bg-red-900/30 flex items-center justify-center mb-5 text-red-500 border border-red-100 dark:border-red-900/50"
-        >
-          <span class="material-symbols-outlined text-[28px]">warning</span>
-        </div>
-        <h3
-          class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2"
-          x-text="confirmModal.title"
-        ></h3>
-        <p
-          class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mb-8 leading-relaxed"
-          x-text="confirmModal.message"
-        ></p>
-        <div class="flex gap-3 justify-center">
-          <button
-            @click="closeConfirm()"
-            class="flex-1 px-4 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm font-medium hover:bg-black/5 transition"
-          >
-            Cancel</button
-          ><button
-            @click="executeConfirm()"
-            class="flex-1 px-4 py-2.5 rounded-full bg-red-500 hover:bg-red-600 text-white text-sm font-medium shadow-md"
-          >
-            Confirm
-          </button>
-        </div>
-      </div>
-    </div>
+    <div class="fixed inset-0 z-[200] flex items-center justify-center p-4 print-hidden" x-show="confirmModal.isOpen" x-cloak><div class="absolute inset-0 bg-white/40 backdrop-blur-sm dark:bg-zinc-950/60" @click="closeConfirm()" x-transition.opacity></div><div class="relative w-full max-w-[360px] rounded-3xl bg-glass-white dark:bg-glass-dark backdrop-blur-xl p-8 border border-outline dark:border-outline-dark glass-shadow text-center" x-transition><div class="mx-auto h-14 w-14 rounded-full bg-red-50 dark:bg-red-900/30 flex items-center justify-center mb-5 text-red-500 border border-red-100 dark:border-red-900/50"><span class="material-symbols-outlined text-[28px]">warning</span></div><h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2" x-text="confirmModal.title"></h3><p class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mb-8 leading-relaxed" x-text="confirmModal.message"></p><div class="flex gap-3 justify-center"><button @click="closeConfirm()" class="flex-1 px-4 py-2.5 rounded-full border border-outline dark:border-outline-dark text-sm font-medium hover:bg-black/5 transition">Cancel</button><button @click="executeConfirm()" class="flex-1 px-4 py-2.5 rounded-full bg-red-500 hover:bg-red-600 text-white text-sm font-medium shadow-md">Confirm</button></div></div></div>
 
     <script>
       function adminApp() {
         const SUPABASE_URL = "https://apuovezfouaxnrxyphle.supabase.co";
-        const SUPABASE_ANON_KEY =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwdW92ZXpmb3VheG5yeHlwaGxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwMTgxNDQsImV4cCI6MjEwMzU5NDE0NH0.HRuRr_4-6eOneAFZygxnb6oewbxF1TMJOI6xR-lL8wk";
-        const supabase = window.supabase.createClient(
-          SUPABASE_URL,
-          SUPABASE_ANON_KEY,
-        );
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwdW92ZXpmb3VheG5yeHlwaGxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwMTgxNDQsImV4cCI6MjEwMzU5NDE0NH0.HRuRr_4-6eOneAFZygxnb6oewbxF1TMJOI6xR-lL8wk";
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         return {
-          authed: false,
-          darkMode: false,
-          userRole: null,
-          userId: null,
-          userName: "",
-          emailInput: "",
-          passwordInput: "",
-          loginError: "",
-          showPassword: false,
+          authed: false, darkMode: false, userRole: null, userId: null, userName: "",
+          emailInput: "", passwordInput: "", loginError: "", showPassword: false,
           tab: "floor",
 
-          products: [],
-          categories: [],
-          tables: [],
-          shopSettings: { shop_name: "", shop_address: "", qr_image_url: "" },
-          profiles: [],
-          openOrdersMap: {},
-          reports: {
-            todaySales: 0,
-            weekSales: 0,
-            bestSellers: [],
-            recentPaidOrders: [],
-          },
-          qrFile: null,
-          uploadingQR: false,
+          products: [], categories: [], tables: [], shopSettings: { shop_name: "", shop_address: "", qr_image_url: "" }, profiles: [], openOrdersMap: {},
+          reports: { todaySales: 0, weekSales: 0, bestSellers: [], recentPaidOrders: [] },
+          qrFile: null, uploadingQR: false,
 
-          selectedFreeTables: [],
-          isCreatingOrder: false,
-          activeOrderModal: false,
-          paymentModal: false,
-          profileOpen: false,
-          myPasswordModal: false,
-          myNewPassword: "",
-          receiptModal: false,
-          activeOrder: null,
-          activeOrderTables: [],
-          activeOrderItems: [],
-          tableToLink: "",
-          pickerSearch: "",
-          pickerCategory: "all",
+          selectedFreeTables: [], isCreatingOrder: false,
+          activeOrderModal: false, paymentModal: false, profileOpen: false, myPasswordModal: false, myNewPassword: "", receiptModal: false,
+          activeOrder: null, activeOrderTables: [], activeOrderItems: [], tableToLink: "", pickerSearch: "", pickerCategory: "all",
 
-          form: {
-            pronameen: "",
-            pronamekh: "",
-            prodescriptionen: "",
-            prodescriptionkh: "",
-            proprice: "",
-            procategoryid: "",
-            proimageurl: "",
-          },
-          editingId: null,
-          saving: false,
-          formError: "",
-
+          form: { pronameen: "", pronamekh: "", prodescriptionen: "", prodescriptionkh: "", proprice: "", procategoryid: "", proimageurl: "" },
+          editingId: null, saving: false, formError: "",
+          
           categoryForm: { catnameen: "", catnamekh: "" },
-          editingCategoryId: null,
-          savingCat: false,
-          categoryFormError: "",
+          editingCategoryId: null, savingCat: false, categoryFormError: "",
 
           userForm: { name: "", email: "", password: "", role: "" },
-          editingUserId: null,
-          savingUser: false,
+          editingUserId: null, savingUser: false,
 
-          tableForm: {
-            name: "",
-            capacity: 4,
-            zone: "Main Hall",
-            status: "free",
-          },
-          editingTableId: null,
-          savingTable: false,
+          tableForm: { name: "", capacity: 4, zone: "Main Hall", status: "free" },
+          editingTableId: null, savingTable: false,
 
-          toasts: [],
-          loadingList: false,
-          confirmModal: { isOpen: false, title: "", message: "", action: null },
+          toasts: [], loadingList: false, confirmModal: { isOpen: false, title: "", message: "", action: null },
 
           async init() {
-            const {
-              data: { session },
-            } = await supabase.auth.getSession();
+            const { data: { session } } = await supabase.auth.getSession();
             if (session) {
               this.userId = session.user.id;
               await this.fetchUserRole();
               this.authed = true;
               await this.loadCoreData();
-              setInterval(() => {
-                if (
-                  this.authed &&
-                  this.tab === "floor" &&
-                  !this.activeOrderModal
-                )
-                  this.loadFloorData();
-              }, 10000);
+              setInterval(() => { if (this.authed && this.tab === "floor" && !this.activeOrderModal) this.loadFloorData(); }, 10000);
             }
           },
 
           // Utility to generate initials (e.g. Prom Rathana -> PR)
           getInitials(name) {
-            if (!name) return "U";
+            if (!name) return 'U';
             const parts = name.trim().split(/\s+/);
-            if (parts.length >= 2)
-              return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+            if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
             return name.substring(0, 2).toUpperCase();
           },
 
-          showToast(message, type = "success") {
-            const id = Date.now();
-            this.toasts.push({ id, message, type });
-            setTimeout(() => {
-              this.toasts = this.toasts.filter((t) => t.id !== id);
-            }, 3500);
-          },
-          confirmAction(title, message, callback) {
-            this.confirmModal = {
-              isOpen: true,
-              title,
-              message,
-              action: callback,
-            };
-          },
-          closeConfirm() {
-            this.confirmModal.isOpen = false;
-            setTimeout(() => {
-              this.confirmModal.action = null;
-            }, 300);
-          },
-          executeConfirm() {
-            if (this.confirmModal.action) this.confirmModal.action();
-            this.closeConfirm();
-          },
+          showToast(message, type = "success") { const id = Date.now(); this.toasts.push({ id, message, type }); setTimeout(() => { this.toasts = this.toasts.filter((t) => t.id !== id); }, 3500); },
+          confirmAction(title, message, callback) { this.confirmModal = { isOpen: true, title, message, action: callback }; },
+          closeConfirm() { this.confirmModal.isOpen = false; setTimeout(() => { this.confirmModal.action = null; }, 300); },
+          executeConfirm() { if (this.confirmModal.action) this.confirmModal.action(); this.closeConfirm(); },
 
           async fetchUserRole() {
-            const { data } = await supabase
-              .from("profiles")
-              .select("role, name")
-              .eq("id", this.userId)
-              .single();
+            const { data } = await supabase.from("profiles").select("role, name").eq("id", this.userId).single();
             this.userRole = data?.role || "seller";
             this.userName = data?.name || "User";
           },
 
           async login() {
-            this.loginError = "";
-            this.loadingList = true;
+            this.loginError = ""; this.loadingList = true;
             try {
-              const { data, error } = await supabase.auth.signInWithPassword({
-                email: this.emailInput,
-                password: this.passwordInput,
-              });
+              const { data, error } = await supabase.auth.signInWithPassword({ email: this.emailInput, password: this.passwordInput });
               if (error) throw error;
               this.userId = data.user.id;
               await this.fetchUserRole();
               this.authed = true;
               await this.loadCoreData();
               this.showToast("Logged in successfully!");
-            } catch (err) {
-              this.loginError = err.message || "Login failed.";
-            }
+            } catch (err) { this.loginError = err.message || "Login failed."; }
             this.loadingList = false;
           },
 
           async logout() {
             await supabase.auth.signOut();
-            this.authed = false;
-            this.userId = null;
-            this.userRole = null;
-            this.userName = "";
-            this.emailInput = "";
-            this.passwordInput = "";
+            this.authed = false; this.userId = null; this.userRole = null; this.userName = ""; this.emailInput = ""; this.passwordInput = "";
           },
 
           async changeMyPassword() {
-            if (!this.myNewPassword)
-              return this.showToast("Please enter a new password.", "error");
+            if (!this.myNewPassword) return this.showToast("Please enter a new password.", "error");
             try {
-              const { error } = await supabase.auth.updateUser({
-                password: this.myNewPassword,
-              });
+              const { error } = await supabase.auth.updateUser({ password: this.myNewPassword });
               if (error) throw error;
               this.showToast("Your password has been updated!", "success");
               this.myPasswordModal = false;
               this.myNewPassword = "";
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch(err) { this.showToast(err.message, "error"); }
           },
 
           async loadCoreData() {
             const [catRes, proRes, setRes] = await Promise.all([
-              supabase
-                .from("categories")
-                .select("*")
-                .order("audit", { ascending: true }),
-              supabase
-                .from("products")
-                .select("*")
-                .order("audit", { ascending: false }),
+              supabase.from("categories").select("*").order("audit", { ascending: true }),
+              supabase.from("products").select("*").order("audit", { ascending: false }),
               supabase.from("shop_settings").select("*").single(),
             ]);
             this.categories = catRes.data || [];
-            this.products = (proRes.data || []).filter(
-              (p) =>
-                p.status === "active" ||
-                ["superadmin", "admin"].includes(this.userRole),
-            );
-            this.shopSettings = setRes.data || {
-              shop_name: "",
-              shop_address: "",
-              qr_image_url: "",
-            };
+            this.products = (proRes.data || []).filter((p) => p.status === "active" || ["superadmin", "admin"].includes(this.userRole));
+            this.shopSettings = setRes.data || { shop_name: "", shop_address: "", qr_image_url: "" };
 
             await this.loadFloorData();
             await this.loadReports();
 
             if (["superadmin", "admin"].includes(this.userRole)) {
-              const { data: profs } = await supabase
-                .from("profiles")
-                .select("*")
-                .order("created_at", { ascending: true });
+              const { data: profs } = await supabase.from("profiles").select("*").order("created_at", { ascending: true });
               this.profiles = profs || [];
             }
           },
 
           async loadReports() {
             try {
-              const { data: paidOrders, error } = await supabase
-                .from("orders")
-                .select("*, order_tables(tables(name))")
-                .eq("status", "paid")
-                .order("paid_at", { ascending: false });
+              const { data: paidOrders, error } = await supabase.from("orders").select("*, order_tables(tables(name))").eq("status", "paid").order("paid_at", { ascending: false });
               if (error) throw error;
               this.reports.recentPaidOrders = paidOrders || [];
 
               const now = new Date();
-              const today = new Date(
-                now.getFullYear(),
-                now.getMonth(),
-                now.getDate(),
-              ).getTime();
+              const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
               const lastWeek = today - 7 * 24 * 60 * 60 * 1000;
 
-              this.reports.todaySales = 0;
-              this.reports.weekSales = 0;
+              this.reports.todaySales = 0; this.reports.weekSales = 0;
               paidOrders.forEach((o) => {
                 const paidDate = new Date(o.paid_at).getTime();
                 const total = Number(o.total) || 0;
@@ -2000,50 +750,32 @@
 
               const paidOrderIds = paidOrders.map((o) => o.order_id);
               if (paidOrderIds.length > 0) {
-                const { data: items, error: iErr } = await supabase
-                  .from("order_items")
-                  .select("quantity, product_id, products(pronameen)")
-                  .in("order_id", paidOrderIds);
+                const { data: items, error: iErr } = await supabase.from("order_items").select("quantity, product_id, products(pronameen)").in("order_id", paidOrderIds);
                 if (iErr) throw iErr;
                 const tally = {};
                 (items || []).forEach((i) => {
-                  if (!tally[i.product_id])
-                    tally[i.product_id] = {
-                      name: i.products?.pronameen || "Unknown",
-                      qty: 0,
-                    };
+                  if (!tally[i.product_id]) tally[i.product_id] = { name: i.products?.pronameen || "Unknown", qty: 0 };
                   tally[i.product_id].qty += i.quantity;
                 });
-                this.reports.bestSellers = Object.values(tally)
-                  .sort((a, b) => b.qty - a.qty)
-                  .slice(0, 10);
+                this.reports.bestSellers = Object.values(tally).sort((a, b) => b.qty - a.qty).slice(0, 10);
               } else {
                 this.reports.bestSellers = [];
               }
-            } catch (err) {
-              console.error("Failed to load reports:", err);
-            }
+            } catch (err) { console.error("Failed to load reports:", err); }
           },
 
           async saveShopDetails() {
             try {
-              const { error } = await supabase
-                .from("shop_settings")
-                .update({
-                  shop_name: this.shopSettings.shop_name,
-                  shop_address: this.shopSettings.shop_address,
-                })
-                .eq("id", 1);
+              const { error } = await supabase.from("shop_settings").update({
+                shop_name: this.shopSettings.shop_name,
+                shop_address: this.shopSettings.shop_address
+              }).eq("id", 1);
               if (error) throw error;
               this.showToast("Shop details saved!", "success");
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
           },
 
-          handleQRSelect(e) {
-            this.qrFile = e.target.files[0];
-          },
+          handleQRSelect(e) { this.qrFile = e.target.files[0]; },
 
           async uploadQR() {
             if (!this.qrFile) return;
@@ -2051,56 +783,36 @@
             try {
               const fileExt = this.qrFile.name.split(".").pop();
               const fileName = "qr_" + Date.now() + "." + fileExt;
-              const { error: uploadErr } = await supabase.storage
-                .from("shop-assets")
-                .upload(fileName, this.qrFile);
+              const { error: uploadErr } = await supabase.storage.from("shop-assets").upload(fileName, this.qrFile);
               if (uploadErr) throw uploadErr;
 
-              const { data } = supabase.storage
-                .from("shop-assets")
-                .getPublicUrl(fileName);
+              const { data } = supabase.storage.from("shop-assets").getPublicUrl(fileName);
               const newUrl = data.publicUrl;
 
-              const { error: dbErr } = await supabase
-                .from("shop_settings")
-                .update({ qr_image_url: newUrl })
-                .eq("id", 1);
+              const { error: dbErr } = await supabase.from("shop_settings").update({ qr_image_url: newUrl }).eq("id", 1);
               if (dbErr) throw dbErr;
 
               this.shopSettings.qr_image_url = newUrl;
               this.showToast("QR Code updated!", "success");
               this.qrFile = null;
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
             this.uploadingQR = false;
           },
 
           // ================= FLOOR LOGIC =================
           async loadFloorData() {
-            const { data: tablesData } = await supabase
-              .from("tables")
-              .select("*")
-              .order("name");
+            const { data: tablesData } = await supabase.from("tables").select("*").order("name");
             this.tables = tablesData || [];
-            const { data: activeLinks } = await supabase
-              .from("order_tables")
-              .select("table_id, order_id, orders!inner(status)")
-              .eq("orders.status", "open");
+            const { data: activeLinks } = await supabase.from("order_tables").select("table_id, order_id, orders!inner(status)").eq("orders.status", "open");
             const mapping = {};
-            if (activeLinks)
-              activeLinks.forEach((link) => {
-                mapping[link.table_id] = link.order_id;
-              });
+            if (activeLinks) activeLinks.forEach((link) => { mapping[link.table_id] = link.order_id; });
             this.openOrdersMap = mapping;
           },
 
           handleTableClick(table) {
             if (table.status === "free") {
               if (this.selectedFreeTables.includes(table.table_id)) {
-                this.selectedFreeTables = this.selectedFreeTables.filter(
-                  (id) => id !== table.table_id,
-                );
+                this.selectedFreeTables = this.selectedFreeTables.filter((id) => id !== table.table_id);
               } else {
                 this.selectedFreeTables.push(table.table_id);
               }
@@ -2110,45 +822,25 @@
                 this.openOrder(orderId);
               } else {
                 if (["superadmin", "admin"].includes(this.userRole)) {
-                  this.confirmAction(
-                    "Reset Stuck Table",
-                    `"${table.name}" is stuck. Reset to Free?`,
-                    async () => {
-                      try {
-                        const { error } = await supabase
-                          .from("tables")
-                          .update({ status: "free" })
-                          .eq("table_id", table.table_id);
-                        if (error) throw error;
-                        this.showToast("Table reset successfully.", "success");
-                        this.loadFloorData();
-                      } catch (err) {
-                        this.showToast(err.message, "error");
-                      }
-                    },
-                  );
-                } else {
-                  this.showToast("Table stuck. Ask Admin to reset.", "error");
-                }
+                  this.confirmAction("Reset Stuck Table", `"${table.name}" is stuck. Reset to Free?`, async () => {
+                    try {
+                      const { error } = await supabase.from("tables").update({ status: "free" }).eq("table_id", table.table_id);
+                      if (error) throw error;
+                      this.showToast("Table reset successfully.", "success");
+                      this.loadFloorData();
+                    } catch (err) { this.showToast(err.message, "error"); }
+                  });
+                } else { this.showToast("Table stuck. Ask Admin to reset.", "error"); }
               }
             } else if (["superadmin", "admin"].includes(this.userRole)) {
-              this.confirmAction(
-                "Reset Table",
-                `Reset "${table.name}" to Free?`,
-                async () => {
-                  try {
-                    const { error } = await supabase
-                      .from("tables")
-                      .update({ status: "free" })
-                      .eq("table_id", table.table_id);
-                    if (error) throw error;
-                    this.showToast("Table reset successfully.", "success");
-                    this.loadFloorData();
-                  } catch (err) {
-                    this.showToast(err.message, "error");
-                  }
-                },
-              );
+              this.confirmAction("Reset Table", `Reset "${table.name}" to Free?`, async () => {
+                try {
+                  const { error } = await supabase.from("tables").update({ status: "free" }).eq("table_id", table.table_id);
+                  if (error) throw error;
+                  this.showToast("Table reset successfully.", "success");
+                  this.loadFloorData();
+                } catch (err) { this.showToast(err.message, "error"); }
+              });
             }
           },
 
@@ -2156,124 +848,69 @@
             if (this.selectedFreeTables.length === 0) return;
             this.isCreatingOrder = true;
             try {
-              const { data: newOrder, error: oErr } = await supabase
-                .from("orders")
-                .insert({ created_by: this.userId, status: "open" })
-                .select()
-                .single();
+              const { data: newOrder, error: oErr } = await supabase.from("orders").insert({ created_by: this.userId, status: "open" }).select().single();
               if (oErr) throw oErr;
-              const otRecords = this.selectedFreeTables.map((tId) => ({
-                order_id: newOrder.order_id,
-                table_id: tId,
-              }));
-              const { error: otErr } = await supabase
-                .from("order_tables")
-                .insert(otRecords);
+              const otRecords = this.selectedFreeTables.map((tId) => ({ order_id: newOrder.order_id, table_id: tId }));
+              const { error: otErr } = await supabase.from("order_tables").insert(otRecords);
               if (otErr) throw otErr;
-              const { error: tErr } = await supabase
-                .from("tables")
-                .update({ status: "occupied" })
-                .in("table_id", this.selectedFreeTables);
+              const { error: tErr } = await supabase.from("tables").update({ status: "occupied" }).in("table_id", this.selectedFreeTables);
               if (tErr) throw tErr;
 
               this.showToast("Order started!");
               this.selectedFreeTables = [];
               await this.loadFloorData();
               this.openOrder(newOrder.order_id);
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
             this.isCreatingOrder = false;
           },
 
           async openOrder(orderId) {
             this.activeOrderModal = true;
-            this.activeOrder = null;
-            this.activeOrderItems = [];
-            this.activeOrderTables = [];
-            this.tableToLink = "";
+            this.activeOrder = null; this.activeOrderItems = []; this.activeOrderTables = []; this.tableToLink = "";
             try {
               const [orderRes, itemsRes, linksRes] = await Promise.all([
-                supabase
-                  .from("orders")
-                  .select("*")
-                  .eq("order_id", orderId)
-                  .single(),
-                supabase
-                  .from("order_items")
-                  .select("*")
-                  .eq("order_id", orderId)
-                  .order("added_at", { ascending: false }),
-                supabase
-                  .from("order_tables")
-                  .select("table_id, tables(*)")
-                  .eq("order_id", orderId),
+                supabase.from("orders").select("*").eq("order_id", orderId).single(),
+                supabase.from("order_items").select("*").eq("order_id", orderId).order("added_at", { ascending: false }),
+                supabase.from("order_tables").select("table_id, tables(*)").eq("order_id", orderId),
               ]);
               this.activeOrder = orderRes.data;
               this.activeOrderItems = itemsRes.data || [];
-              this.activeOrderTables = linksRes.data
-                ? linksRes.data.map((l) => l.tables)
-                : [];
+              this.activeOrderTables = linksRes.data ? linksRes.data.map((l) => l.tables) : [];
             } catch (err) {
               this.showToast("Failed to load order.", "error");
               this.activeOrderModal = false;
             }
           },
 
-          closeOrderModal() {
-            this.activeOrderModal = false;
-            this.loadFloorData();
-          },
+          closeOrderModal() { this.activeOrderModal = false; this.loadFloorData(); },
 
           cancelOrder() {
-            this.confirmAction(
-              "Cancel Order",
-              "Delete this order completely and free the table(s)?",
-              async () => {
-                try {
-                  // Free tables first
-                  if (this.activeOrderTables.length > 0) {
-                    const tIds = this.activeOrderTables.map((t) => t.table_id);
-                    await supabase
-                      .from("tables")
-                      .update({ status: "free" })
-                      .in("table_id", tIds);
-                  }
-                  // Delete order (Supabase cascade rules will auto-delete order_items and order_tables)
-                  await supabase
-                    .from("orders")
-                    .delete()
-                    .eq("order_id", this.activeOrder.order_id);
-                  this.showToast("Order cancelled.", "success");
-                  this.closeOrderModal();
-                } catch (err) {
-                  this.showToast(err.message, "error");
+            this.confirmAction("Cancel Order", "Delete this order completely and free the table(s)?", async () => {
+              try {
+                // Free tables first
+                if (this.activeOrderTables.length > 0) {
+                  const tIds = this.activeOrderTables.map(t => t.table_id);
+                  await supabase.from("tables").update({ status: "free" }).in("table_id", tIds);
                 }
-              },
-            );
+                // Delete order (Supabase cascade rules will auto-delete order_items and order_tables)
+                await supabase.from("orders").delete().eq("order_id", this.activeOrder.order_id);
+                this.showToast("Order cancelled.", "success");
+                this.closeOrderModal();
+              } catch (err) { this.showToast(err.message, "error"); }
+            });
           },
 
           get activeOrderTotal() {
             if (!this.activeOrderItems) return 0;
-            return this.activeOrderItems.reduce(
-              (sum, item) => sum + item.quantity * item.unit_price_snapshot,
-              0,
-            );
+            return this.activeOrderItems.reduce((sum, item) => sum + item.quantity * item.unit_price_snapshot, 0);
           },
 
           get pickerProducts() {
             let items = this.products.filter((p) => p.status === "active");
-            if (this.pickerCategory !== "all")
-              items = items.filter(
-                (p) => p.procategoryid === this.pickerCategory,
-              );
+            if (this.pickerCategory !== "all") items = items.filter((p) => p.procategoryid === this.pickerCategory);
             if (this.pickerSearch) {
               const s = this.pickerSearch.toLowerCase();
-              items = items.filter(
-                (p) =>
-                  p.pronameen.toLowerCase().includes(s) ||
-                  p.pronamekh.includes(s),
-              );
+              items = items.filter((p) => p.pronameen.toLowerCase().includes(s) || p.pronamekh.includes(s));
             }
             return items;
           },
@@ -2284,73 +921,36 @@
           },
 
           async addItemToOrder(product) {
-            if (this.activeOrder?.status !== "open")
-              return this.showToast("Order is not open.", "error");
+            if (this.activeOrder?.status !== "open") return this.showToast("Order is not open.", "error");
             try {
-              const newItem = {
-                order_id: this.activeOrder.order_id,
-                product_id: product.proid,
-                quantity: 1,
-                unit_price_snapshot: product.proprice,
-                added_by: this.userId,
-              };
-              const { data, error } = await supabase
-                .from("order_items")
-                .insert(newItem)
-                .select()
-                .single();
+              const newItem = { order_id: this.activeOrder.order_id, product_id: product.proid, quantity: 1, unit_price_snapshot: product.proprice, added_by: this.userId };
+              const { data, error } = await supabase.from("order_items").insert(newItem).select().single();
               if (error) throw error;
               this.activeOrderItems.unshift(data);
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
           },
 
           async removeOrderItem(itemId) {
             try {
-              const { error } = await supabase
-                .from("order_items")
-                .delete()
-                .eq("item_id", itemId);
+              const { error } = await supabase.from("order_items").delete().eq("item_id", itemId);
               if (error) throw error;
-              this.activeOrderItems = this.activeOrderItems.filter(
-                (i) => i.item_id !== itemId,
-              );
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+              this.activeOrderItems = this.activeOrderItems.filter((i) => i.item_id !== itemId);
+            } catch (err) { this.showToast(err.message, "error"); }
           },
 
           async linkTableToOrder() {
-            if (!this.tableToLink || this.activeOrder?.status !== "open")
-              return;
+            if (!this.tableToLink || this.activeOrder?.status !== "open") return;
             try {
-              await supabase
-                .from("order_tables")
-                .insert({
-                  order_id: this.activeOrder.order_id,
-                  table_id: this.tableToLink,
-                });
-              await supabase
-                .from("tables")
-                .update({ status: "occupied" })
-                .eq("table_id", this.tableToLink);
-              const { data: t } = await supabase
-                .from("tables")
-                .select("*")
-                .eq("table_id", this.tableToLink)
-                .single();
+              await supabase.from("order_tables").insert({ order_id: this.activeOrder.order_id, table_id: this.tableToLink });
+              await supabase.from("tables").update({ status: "occupied" }).eq("table_id", this.tableToLink);
+              const { data: t } = await supabase.from("tables").select("*").eq("table_id", this.tableToLink).single();
               this.activeOrderTables.push(t);
               this.tableToLink = "";
               this.showToast("Table added to order.");
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
           },
 
-          openPaymentModal() {
-            this.paymentModal = true;
-          },
+          openPaymentModal() { this.paymentModal = true; },
 
           async confirmPayment() {
             try {
@@ -2366,20 +966,14 @@
 
               if (this.activeOrderTables.length > 0) {
                 const tIds = this.activeOrderTables.map((t) => t.table_id);
-                const { error: tErr } = await supabase
-                  .from("tables")
-                  .update({ status: "free" })
-                  .in("table_id", tIds);
+                const { error: tErr } = await supabase.from("tables").update({ status: "free" }).in("table_id", tIds);
                 if (tErr) throw tErr;
               }
 
               this.activeOrder.status = "paid";
               this.paymentModal = false;
-              this.showToast(
-                "Order marked as PAID and tables freed!",
-                "success",
-              );
-
+              this.showToast("Order marked as PAID and tables freed!", "success");
+              
               await this.loadReports();
               this.closeOrderModal();
             } catch (err) {
@@ -2388,385 +982,178 @@
           },
 
           // ================= TABLES MANAGEMENT LOGIC =================
-          resetTableForm() {
-            this.editingTableId = null;
-            this.tableForm = {
-              name: "",
-              capacity: 4,
-              zone: "Main Hall",
-              status: "free",
-            };
-          },
-          editTable(t) {
-            this.editingTableId = t.table_id;
-            this.tableForm = {
-              name: t.name,
-              capacity: t.capacity,
-              zone: t.zone,
-              status: t.status,
-            };
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          },
+          resetTableForm() { this.editingTableId = null; this.tableForm = { name: "", capacity: 4, zone: "Main Hall", status: "free" }; },
+          editTable(t) { this.editingTableId = t.table_id; this.tableForm = { name: t.name, capacity: t.capacity, zone: t.zone, status: t.status }; window.scrollTo({ top: 0, behavior: "smooth" }); },
           async saveTable() {
-            if (!this.tableForm.name)
-              return this.showToast("Table name is required.", "error");
+            if (!this.tableForm.name) return this.showToast("Table name is required.", "error");
             this.savingTable = true;
             try {
-              const payload = {
-                ...this.tableForm,
-                capacity: Number(this.tableForm.capacity) || 1,
-              };
+              const payload = { ...this.tableForm, capacity: Number(this.tableForm.capacity) || 1 };
               if (this.editingTableId) {
-                const { error } = await supabase
-                  .from("tables")
-                  .update(payload)
-                  .eq("table_id", this.editingTableId);
+                const { error } = await supabase.from('tables').update(payload).eq('table_id', this.editingTableId);
                 if (error) throw error;
                 this.showToast("Table updated!");
               } else {
-                const { error } = await supabase
-                  .from("tables")
-                  .insert([payload]);
+                const { error } = await supabase.from('tables').insert([payload]);
                 if (error) throw error;
                 this.showToast("Table added!");
               }
               await this.loadFloorData();
               this.resetTableForm();
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch(err) { this.showToast(err.message, "error"); }
             this.savingTable = false;
           },
           removeTable(t) {
-            if (t.status === "occupied")
-              return this.showToast(
-                "Cannot delete an occupied table.",
-                "error",
-              );
-            this.confirmAction(
-              "Delete Table",
-              `Permanently delete "${t.name}"?`,
-              async () => {
-                try {
-                  const { error } = await supabase
-                    .from("tables")
-                    .delete()
-                    .eq("table_id", t.table_id);
-                  if (error) throw error;
-                  this.showToast("Table deleted.", "success");
-                  await this.loadFloorData();
-                } catch (err) {
-                  this.showToast(err.message, "error");
-                }
-              },
-            );
+            if (t.status === 'occupied') return this.showToast("Cannot delete an occupied table.", "error");
+            this.confirmAction("Delete Table", `Permanently delete "${t.name}"?`, async () => {
+              try {
+                const { error } = await supabase.from('tables').delete().eq('table_id', t.table_id);
+                if (error) throw error;
+                this.showToast("Table deleted.", "success");
+                await this.loadFloorData();
+              } catch(err) { this.showToast(err.message, "error"); }
+            });
           },
 
           // ================= ACCOUNT MANAGEMENT LOGIC =================
-          resetUserForm() {
-            this.editingUserId = null;
-            this.userForm = { name: "", email: "", password: "", role: "" };
-          },
-          editUser(p) {
-            this.editingUserId = p.id;
-            this.userForm = {
-              name: p.name,
-              email: p.email,
-              role: p.role,
-              password: "",
-            };
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          },
+          resetUserForm() { this.editingUserId = null; this.userForm = { name: "", email: "", password: "", role: "" }; },
+          editUser(p) { this.editingUserId = p.id; this.userForm = { name: p.name, email: p.email, role: p.role, password: "" }; window.scrollTo({ top: 0, behavior: "smooth" }); },
           async saveUser() {
-            if (!this.userForm.name || !this.userForm.role)
-              return this.showToast("Name and role are required.", "error");
+            if (!this.userForm.name || !this.userForm.role) return this.showToast("Name and role are required.", "error");
             this.savingUser = true;
             try {
               if (this.editingUserId) {
                 // Update Name & Role natively
-                const { error } = await supabase
-                  .from("profiles")
-                  .update({
-                    name: this.userForm.name,
-                    role: this.userForm.role,
-                  })
-                  .eq("id", this.editingUserId);
+                const { error } = await supabase.from("profiles").update({ name: this.userForm.name, role: this.userForm.role }).eq("id", this.editingUserId);
                 if (error) throw error;
 
                 // Update Password via Edge Function if provided
                 if (this.userForm.password) {
-                  const {
-                    data: { session },
-                  } = await supabase.auth.getSession();
-                  const res = await fetch(
-                    `${SUPABASE_URL}/functions/v1/rapid-responder`,
-                    {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${session.access_token}`,
-                      },
-                      body: JSON.stringify({
-                        action: "update_password",
-                        uid: this.editingUserId,
-                        password: this.userForm.password,
-                      }),
-                    },
-                  );
+                  const { data: { session } } = await supabase.auth.getSession();
+                  const res = await fetch(`${SUPABASE_URL}/functions/v1/rapid-responder`, {
+                    method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+                    body: JSON.stringify({ action: "update_password", uid: this.editingUserId, password: this.userForm.password }),
+                  });
                   const json = await res.json();
-                  if (!res.ok)
-                    throw new Error(json.error || "Failed to update password.");
+                  if (!res.ok) throw new Error(json.error || "Failed to update password.");
                 }
                 this.showToast("Profile updated successfully!");
               } else {
-                if (!this.userForm.email || !this.userForm.password)
-                  throw new Error("Email and password are required.");
-                const {
-                  data: { session },
-                } = await supabase.auth.getSession();
-                const res = await fetch(
-                  `${SUPABASE_URL}/functions/v1/rapid-responder`,
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${session.access_token}`,
-                    },
-                    body: JSON.stringify({
-                      action: "create",
-                      email: this.userForm.email,
-                      password: this.userForm.password,
-                      name: this.userForm.name,
-                      role: this.userForm.role,
-                    }),
-                  },
-                );
+                if (!this.userForm.email || !this.userForm.password) throw new Error("Email and password are required.");
+                const { data: { session } } = await supabase.auth.getSession();
+                const res = await fetch(`${SUPABASE_URL}/functions/v1/rapid-responder`, {
+                  method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+                  body: JSON.stringify({ action: "create", email: this.userForm.email, password: this.userForm.password, name: this.userForm.name, role: this.userForm.role }),
+                });
                 const json = await res.json();
-                if (!res.ok)
-                  throw new Error(json.error || "Failed to create user.");
+                if (!res.ok) throw new Error(json.error || "Failed to create user.");
                 this.showToast("Account created successfully!");
               }
               await this.loadCoreData();
               this.resetUserForm();
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
             this.savingUser = false;
           },
           removeUser(p) {
-            this.confirmAction(
-              "Delete Account",
-              `Permanently delete ${p.name}'s account?`,
-              async () => {
-                try {
-                  const {
-                    data: { session },
-                  } = await supabase.auth.getSession();
-                  const res = await fetch(
-                    `${SUPABASE_URL}/functions/v1/rapid-responder`,
-                    {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${session.access_token}`,
-                      },
-                      body: JSON.stringify({ action: "delete", uid: p.id }),
-                    },
-                  );
-                  if (!res.ok) throw new Error("Failed to delete user.");
-                  this.showToast("Account deleted.", "success");
-                  await this.loadCoreData();
-                } catch (err) {
-                  this.showToast(err.message, "error");
-                }
-              },
-            );
+            this.confirmAction("Delete Account", `Permanently delete ${p.name}'s account?`, async () => {
+              try {
+                const { data: { session } } = await supabase.auth.getSession();
+                const res = await fetch(`${SUPABASE_URL}/functions/v1/rapid-responder`, {
+                  method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },
+                  body: JSON.stringify({ action: "delete", uid: p.id }),
+                });
+                if (!res.ok) throw new Error("Failed to delete user.");
+                this.showToast("Account deleted.", "success");
+                await this.loadCoreData();
+              } catch (err) { this.showToast(err.message, "error"); }
+            });
           },
 
           // ================= PRODUCTS/CATEGORIES LOGIC =================
-          categoryName(catid) {
-            const cat = this.categories.find((c) => c.catid === catid);
-            return cat
-              ? cat.catnameen + " / " + cat.catnamekh
-              : "(no category)";
-          },
-          productCountFor(catid) {
-            return this.products.filter((p) => p.procategoryid === catid)
-              .length;
-          },
-
-          resetForm() {
-            this.editingId = null;
-            this.form = {
-              pronameen: "",
-              pronamekh: "",
-              prodescriptionen: "",
-              prodescriptionkh: "",
-              proprice: "",
-              procategoryid: "",
-              proimageurl: "",
-            };
-            this.formError = "";
-          },
-          editProduct(p) {
-            this.editingId = p.proid;
-            this.form = { ...p };
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          },
+          categoryName(catid) { const cat = this.categories.find((c) => c.catid === catid); return cat ? cat.catnameen + " / " + cat.catnamekh : "(no category)"; },
+          productCountFor(catid) { return this.products.filter((p) => p.procategoryid === catid).length; },
+          
+          resetForm() { this.editingId = null; this.form = { pronameen: "", pronamekh: "", prodescriptionen: "", prodescriptionkh: "", proprice: "", procategoryid: "", proimageurl: "" }; this.formError = ""; },
+          editProduct(p) { this.editingId = p.proid; this.form = { ...p }; window.scrollTo({ top: 0, behavior: "smooth" }); },
           async saveProduct() {
             this.formError = "";
-            if (!this.form.pronameen || !this.form.proprice)
-              return (this.formError = "Name and Price required.");
-            if (!this.form.procategoryid)
-              return (this.formError = "Choose a category.");
+            if (!this.form.pronameen || !this.form.proprice) return (this.formError = "Name and Price required.");
+            if (!this.form.procategoryid) return (this.formError = "Choose a category.");
             this.saving = true;
             try {
-              const payload = {
-                ...this.form,
-                proprice: Number(this.form.proprice) || 0,
-              };
+              const payload = { ...this.form, proprice: Number(this.form.proprice) || 0 };
               if (this.editingId) {
-                const { error } = await supabase
-                  .from("products")
-                  .update(payload)
-                  .eq("proid", this.editingId);
+                const { error } = await supabase.from("products").update(payload).eq("proid", this.editingId);
                 if (error) throw error;
               } else {
-                const { error } = await supabase
-                  .from("products")
-                  .insert([payload]);
+                const { error } = await supabase.from("products").insert([payload]);
                 if (error) throw error;
               }
               await this.loadCoreData();
-              this.showToast(
-                this.editingId ? "Product updated!" : "Product added!",
-              );
+              this.showToast(this.editingId ? "Product updated!" : "Product added!");
               this.resetForm();
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
             this.saving = false;
           },
           async toggleStatus(p) {
             try {
               const nextStatus = p.status === "active" ? "hidden" : "active";
-              const { error } = await supabase
-                .from("products")
-                .update({ status: nextStatus })
-                .eq("proid", p.proid);
+              const { error } = await supabase.from("products").update({ status: nextStatus }).eq("proid", p.proid);
               if (error) throw error;
               p.status = nextStatus;
               this.showToast(`Product visibility updated.`, "success");
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
           },
           removeProduct(p) {
-            this.confirmAction(
-              "Delete Product",
-              `Permanently delete "${p.pronameen}"?`,
-              async () => {
-                try {
-                  const { error } = await supabase
-                    .from("products")
-                    .delete()
-                    .eq("proid", p.proid);
-                  if (error) throw error;
-                  this.products = this.products.filter(
-                    (prod) => prod.proid !== p.proid,
-                  );
-                  this.showToast("Product deleted.", "success");
-                } catch (err) {
-                  this.showToast(err.message, "error");
-                }
-              },
-            );
+            this.confirmAction("Delete Product", `Permanently delete "${p.pronameen}"?`, async () => {
+              try {
+                const { error } = await supabase.from("products").delete().eq("proid", p.proid);
+                if (error) throw error;
+                this.products = this.products.filter((prod) => prod.proid !== p.proid);
+                this.showToast("Product deleted.", "success");
+              } catch (err) { this.showToast(err.message, "error"); }
+            });
           },
 
-          resetCategoryForm() {
-            this.editingCategoryId = null;
-            this.categoryForm = { catnameen: "", catnamekh: "" };
-            this.categoryFormError = "";
-          },
-          editCategory(c) {
-            this.editingCategoryId = c.catid;
-            this.categoryForm = {
-              catnameen: c.catnameen,
-              catnamekh: c.catnamekh,
-            };
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          },
+          resetCategoryForm() { this.editingCategoryId = null; this.categoryForm = { catnameen: "", catnamekh: "" }; this.categoryFormError = ""; },
+          editCategory(c) { this.editingCategoryId = c.catid; this.categoryForm = { catnameen: c.catnameen, catnamekh: c.catnamekh }; window.scrollTo({ top: 0, behavior: "smooth" }); },
           async saveCategory() {
             this.categoryFormError = "";
-            if (!this.categoryForm.catnameen || !this.categoryForm.catnamekh)
-              return (this.categoryFormError = "Both names required.");
+            if (!this.categoryForm.catnameen || !this.categoryForm.catnamekh) return (this.categoryFormError = "Both names required.");
             this.savingCat = true;
             try {
               const payload = { ...this.categoryForm };
               if (this.editingCategoryId) {
-                const { error } = await supabase
-                  .from("categories")
-                  .update(payload)
-                  .eq("catid", this.editingCategoryId);
+                const { error } = await supabase.from("categories").update(payload).eq("catid", this.editingCategoryId);
                 if (error) throw error;
               } else {
-                const { error } = await supabase
-                  .from("categories")
-                  .insert([payload]);
+                const { error } = await supabase.from("categories").insert([payload]);
                 if (error) throw error;
               }
               await this.loadCoreData();
-              this.showToast(
-                this.editingCategoryId
-                  ? "Category updated!"
-                  : "Category added!",
-              );
+              this.showToast(this.editingCategoryId ? "Category updated!" : "Category added!");
               this.resetCategoryForm();
-            } catch (err) {
-              this.showToast(err.message, "error");
-            }
+            } catch (err) { this.showToast(err.message, "error"); }
             this.savingCat = false;
           },
           removeCategory(c) {
             const count = this.productCountFor(c.catid);
-            const warningMsg =
-              count > 0
-                ? `Delete "${c.catnameen}"? ${count} products will be moved to Uncategorized.`
-                : `Delete "${c.catnameen}"?`;
+            const warningMsg = count > 0 ? `Delete "${c.catnameen}"? ${count} products will be moved to Uncategorized.` : `Delete "${c.catnameen}"?`;
             this.confirmAction("Delete Category", warningMsg, async () => {
               try {
                 if (count > 0) {
-                  let { data: uncat } = await supabase
-                    .from("categories")
-                    .select("catid")
-                    .eq("catnameen", "Uncategorized")
-                    .single();
+                  let { data: uncat } = await supabase.from("categories").select("catid").eq("catnameen", "Uncategorized").single();
                   if (!uncat) {
-                    const { data: newUncat } = await supabase
-                      .from("categories")
-                      .insert({
-                        catnameen: "Uncategorized",
-                        catnamekh: "មិនទាន់មានប្រភេទ",
-                      })
-                      .select()
-                      .single();
+                    const { data: newUncat } = await supabase.from("categories").insert({ catnameen: "Uncategorized", catnamekh: "មិនទាន់មានប្រភេទ" }).select().single();
                     uncat = newUncat;
                   }
-                  await supabase
-                    .from("products")
-                    .update({ procategoryid: uncat.catid })
-                    .eq("procategoryid", c.catid);
+                  await supabase.from("products").update({ procategoryid: uncat.catid }).eq("procategoryid", c.catid);
                 }
-                const { error } = await supabase
-                  .from("categories")
-                  .delete()
-                  .eq("catid", c.catid);
+                const { error } = await supabase.from("categories").delete().eq("catid", c.catid);
                 if (error) throw error;
                 await this.loadCoreData();
                 this.showToast("Category deleted.", "success");
-              } catch (err) {
-                this.showToast(err.message, "error");
-              }
+              } catch (err) { this.showToast(err.message, "error"); }
             });
           },
         };
